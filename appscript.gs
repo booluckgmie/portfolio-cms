@@ -104,7 +104,9 @@ function readCards(ss) {
       color:    obj.color    || '#4f7cff',
       thumbUrl: obj.thumburl || '',
       faded:    (obj.faded  === 'TRUE' || obj.faded  === 'true'  || obj.faded  === '1'),
-      newTab:   (obj.newtab === 'TRUE' || obj.newtab === 'true'  || obj.newtab === '1')
+      newTab:   (obj.newtab === 'TRUE' || obj.newtab === 'true'  || obj.newtab === '1'),
+      locked:   (obj.locked  === 'TRUE' || obj.locked  === 'true'  || obj.locked  === '1'),
+      lockKey:  obj.lockkey  || '',
     });
   }
   return cards;
@@ -150,7 +152,7 @@ function setupSheets() {
   cs.clearContents();
   cs.clearFormats();
 
-  const cHeaders = ['id', 'group', 'url', 'title', 'tag', 'desc', 'size', 'color', 'thumbUrl', 'faded', 'newTab'];
+  const cHeaders = ['id', 'group', 'url', 'title', 'tag', 'desc', 'size', 'color', 'thumbUrl', 'faded', 'newTab', 'locked', 'lockKey'];
   cs.getRange(1, 1, 1, cHeaders.length)
     .setValues([cHeaders])
     .setFontWeight('bold')
@@ -158,24 +160,24 @@ function setupSheets() {
     .setFontColor('#e8e9ed');
 
   const cardRows = [
-    ['c1',  'corp', 'shareholder_network.html',  'Shareholder Network',        'Network',      'Force-graph visualisation of shareholder–company relationships.',          '189 KB', '#4f7cff', '', 'FALSE', 'FALSE'],
-    ['c2',  'corp', 'shareholder_coi6.html',     'COI Dashboard v6',           'COI v6',       'Conflict-of-interest declaration dashboard.',                              '22 KB',  '#4f7cff', '', 'FALSE', 'FALSE'],
-    ['c3',  'corp', 'coi_v1.html',               'Shareholder–Company Vis',    'Shareholders', 'Original index — shareholder list and network.',                           '',       '#4f7cff', '', 'FALSE', 'FALSE'],
-    ['c4',  'corp', 'shareholder_db2.csv',        'Shareholder Database',       'Data',         'Raw CSV dataset — shareholder records and affiliations.',                  '72 KB',  '#4f7cff', '', 'FALSE', 'TRUE'],
-    ['c5',  'corp', 'shareholder_coi6_old.html', 'COI Dashboard (legacy)',     'Archive',      'Previous COI dashboard version — kept for reference.',                    '17 KB',  '#4f7cff', '', 'TRUE',  'FALSE'],
-    ['c6',  'hr',   'vistatalent.html',           'VistaTalent',                'Talent',       'Full-featured HR talent dashboard — profiles, org chart, performance.',    '44 KB',  '#b39ddb', '', 'FALSE', 'FALSE'],
-    ['c7',  'hr',   'vistatalent-mini.html',      'VistaTalent Mini',           'Compact',      'Lightweight compact version for embedding or quick lookup.',               '35 KB',  '#b39ddb', '', 'FALSE', 'FALSE'],
-    ['c8',  'fin',  'paydaylock.html',            'PaydayLock',                 'Payroll',      'Payroll lock and sign-off — freeze periods, confirm cut-offs.',            '11 KB',  '#ffd43b', '', 'FALSE', 'FALSE'],
-    ['c9',  'fin',  'ogsedash.html',              'OGSE Dashboard',             'KPI',          'OGS/E financial metrics — KPI cards, trend charts, period comparison.',   '18 KB',  '#ffd43b', '', 'FALSE', 'FALSE'],
-    ['c10', 'data', 'samuraiv2_opdash.html',      'Samurai v2 — Ops',          'Ops',          'Operations command dashboard — status tiles, activity log, KPI summary.', '22 KB',  '#ffa94d', '', 'FALSE', 'FALSE'],
-    ['c11', 'data', 'samuraiv2_opdash-int.html',  'Samurai v2 — Interactive',   'Interactive',  'Enhanced interactive build — drill-down filters, live panels, alerts.',   '27 KB',  '#ffa94d', '', 'FALSE', 'FALSE'],
-    ['c12', 'data', 'weather_indc.html',          'Weather Indicator',          'Weather',      'Field operations weather widget — conditions, forecast, work-safe.',       '24 KB',  '#ffa94d', '', 'FALSE', 'FALSE'],
-    ['c13', 'dev',  'nexaflow.html',              'NexaFlow',                   'Workflow',     'Visual workflow builder — node-based automation with branching.',          '47 KB',  '#4dd0e1', '', 'FALSE', 'FALSE'],
-    ['c14', 'dev',  'pyjourney.html',             'PyJourney',                  'Learning',     'Python learning tracker — progress, snippets, and milestone badges.',      '31 KB',  '#4dd0e1', '', 'FALSE', 'FALSE'],
-    ['c15', 'dev',  'searchswec.html',            'SearchSWEC',                 'Search',       'Full-featured local search — indexed dataset, faceted filters.',           '1.2 MB', '#4dd0e1', '', 'FALSE', 'FALSE'],
-    ['c16', 'dev',  'ui_form.html',               'UI Form',                    'UI',           'General-purpose form prototype — validation, multi-step layout.',          '20 KB',  '#4dd0e1', '', 'FALSE', 'FALSE'],
-    ['c17', 'dev',  'x.html',                     'X — Scratch Sandbox',        'Sandbox',      'Experimental page for quick prototyping before integration.',              '7 KB',   '#4dd0e1', '', 'FALSE', 'FALSE'],
-    ['c18', 'comm', 'newsletter1fm.html',         'Newsletter 1FM',             'Newsletter',   'Branded email newsletter template — responsive layout, CTA buttons.',     '15 KB',  '#f06292', '', 'FALSE', 'FALSE'],
+    ['c1',  'corp', 'shareholder_network.html',  'Shareholder Network',        'Network',      'Force-graph visualisation of shareholder–company relationships.',          '189 KB', '#4f7cff', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c2',  'corp', 'shareholder_coi6.html',     'COI Dashboard v6',           'COI v6',       'Conflict-of-interest declaration dashboard.',                              '22 KB',  '#4f7cff', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c3',  'corp', 'coi_v1.html',               'Shareholder–Company Vis',    'Shareholders', 'Original index — shareholder list and network.',                           '',       '#4f7cff', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c4',  'corp', 'shareholder_db2.csv',        'Shareholder Database',       'Data',         'Raw CSV dataset — shareholder records and affiliations.',                  '72 KB',  '#4f7cff', '', 'FALSE', 'TRUE',  'FALSE', ''],
+    ['c5',  'corp', 'shareholder_coi6_old.html', 'COI Dashboard (legacy)',     'Archive',      'Previous COI dashboard version — kept for reference.',                    '17 KB',  '#4f7cff', '', 'TRUE',  'FALSE', 'FALSE', ''],
+    ['c6',  'hr',   'vistatalent.html',           'VistaTalent',                'Talent',       'Full-featured HR talent dashboard — profiles, org chart, performance.',    '44 KB',  '#b39ddb', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c7',  'hr',   'vistatalent-mini.html',      'VistaTalent Mini',           'Compact',      'Lightweight compact version for embedding or quick lookup.',               '35 KB',  '#b39ddb', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c8',  'fin',  'paydaylock.html',            'PaydayLock',                 'Payroll',      'Payroll lock and sign-off — freeze periods, confirm cut-offs.',            '11 KB',  '#ffd43b', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c9',  'fin',  'ogsedash.html',              'OGSE Dashboard',             'KPI',          'OGS/E financial metrics — KPI cards, trend charts, period comparison.',   '18 KB',  '#ffd43b', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c10', 'data', 'samuraiv2_opdash.html',      'Samurai v2 — Ops',          'Ops',          'Operations command dashboard — status tiles, activity log, KPI summary.', '22 KB',  '#ffa94d', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c11', 'data', 'samuraiv2_opdash-int.html',  'Samurai v2 — Interactive',   'Interactive',  'Enhanced interactive build — drill-down filters, live panels, alerts.',   '27 KB',  '#ffa94d', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c12', 'data', 'weather_indc.html',          'Weather Indicator',          'Weather',      'Field operations weather widget — conditions, forecast, work-safe.',       '24 KB',  '#ffa94d', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c13', 'dev',  'nexaflow.html',              'NexaFlow',                   'Workflow',     'Visual workflow builder — node-based automation with branching.',          '47 KB',  '#4dd0e1', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c14', 'dev',  'pyjourney.html',             'PyJourney',                  'Learning',     'Python learning tracker — progress, snippets, and milestone badges.',      '31 KB',  '#4dd0e1', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c15', 'dev',  'searchswec.html',            'SearchSWEC',                 'Search',       'Full-featured local search — indexed dataset, faceted filters.',           '1.2 MB', '#4dd0e1', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c16', 'dev',  'ui_form.html',               'UI Form',                    'UI',           'General-purpose form prototype — validation, multi-step layout.',          '20 KB',  '#4dd0e1', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c17', 'dev',  'x.html',                     'X — Scratch Sandbox',        'Sandbox',      'Experimental page for quick prototyping before integration.',              '7 KB',   '#4dd0e1', '', 'FALSE', 'FALSE', 'FALSE', ''],
+    ['c18', 'comm', 'newsletter1fm.html',         'Newsletter 1FM',             'Newsletter',   'Branded email newsletter template — responsive layout, CTA buttons.',     '15 KB',  '#f06292', '', 'FALSE', 'FALSE', 'FALSE', ''],
   ];
   cs.getRange(2, 1, cardRows.length, cHeaders.length).setValues(cardRows);
 
@@ -190,6 +192,8 @@ function setupSheets() {
   cs.setColumnWidth(9,  200);
   cs.setColumnWidth(10, 65);
   cs.setColumnWidth(11, 65);
+  cs.setColumnWidth(12, 65);
+  cs.setColumnWidth(13, 120);
   cs.setFrozenRows(1);
 
   const grpRule = SpreadsheetApp.newDataValidation()
@@ -203,6 +207,7 @@ function setupSheets() {
     .setAllowInvalid(false)
     .build();
   cs.getRange(2, 10, 300, 2).setDataValidation(boolRule);
+  cs.getRange(2, 12, 300, 1).setDataValidation(boolRule);
 
   Logger.log('✅ setupSheets complete. Sheets: "' + GROUPS_SHEET + '" and "' + CARDS_SHEET + '" created.');
   Logger.log('Next: Deploy → New deployment → Web app → Execute as Me → Anyone → copy /exec URL.');

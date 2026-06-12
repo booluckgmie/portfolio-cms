@@ -203,6 +203,9 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
   .field-row{grid-template-columns:1fr}
   .auth-box{padding:28px 22px 24px}
 }
+/* LOCK */
+.lock-badge{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;background:rgba(13,15,20,.85);border:1px solid rgba(255,183,77,.4);display:flex;align-items:center;justify-content:center;z-index:3;backdrop-filter:blur(4px)}
+.lock-badge i{font-size:13px;color:#ffa94d}
 </style>
 </head>
 <body>
@@ -336,6 +339,12 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <div class="field"><label>Accent colour</label><div class="swatches" id="colorSwatches"></div></div>
       <label class="check-row"><input type="checkbox" id="f_faded"> Archive / faded</label>
       <label class="check-row"><input type="checkbox" id="f_newtab"> Open in new tab</label>
+      <div style="border-top:1px solid var(--border);padding-top:10px;margin-top:4px">
+        <label class="check-row"><input type="checkbox" id="f_locked" onchange="document.getElementById('f_lockKey_wrap').style.display=this.checked?'':'none'"> Protected — requires key to open</label>
+        <div id="f_lockKey_wrap" style="display:none;margin-top:8px">
+          <div class="field"><label>Custom key <span style="color:var(--text3);font-weight:400">(blank = global prototype key)</span></label><input type="text" id="f_lockKey" placeholder="Leave blank for global key"></div>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn" onclick="closeModal('cardModal')">Cancel</button>
@@ -390,6 +399,9 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       </button>
       <button class="btn" onclick="closeModal('adminModal');openSheetModal()" style="width:100%;justify-content:flex-start">
         <i class="ti ti-table-options"></i> Google Sheet connection
+      </button>
+      <button class="btn" onclick="closeModal('adminModal');openProtoKey()" style="width:100%;justify-content:flex-start">
+        <i class="ti ti-lock"></i> Prototype access key
       </button>
       <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px">
         <button class="btn danger" onclick="closeModal('adminModal');confirmReset()" style="width:100%;justify-content:flex-start">
@@ -558,6 +570,59 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <button class="btn primary" id="netlify_import_btn" style="display:none" onclick="importNetlifySites()">
         <i class="ti ti-plus"></i> Add selected to hub
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- LOCK GATE MODAL -->
+<div class="modal-overlay" id="lockModal">
+  <div class="modal narrow">
+    <div class="modal-header">
+      <span class="modal-title"><i class="ti ti-lock" style="color:#ffa94d"></i> Protected</span>
+      <button class="modal-close" onclick="closeModal('lockModal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body" id="lockBox">
+      <div style="text-align:center;padding:4px 0 8px">
+        <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,169,77,.1);border:1px solid rgba(255,169,77,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;color:#ffa94d"><i class="ti ti-lock"></i></div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px" id="lockTitle"></div>
+        <div style="font-size:12px;color:var(--text2)">Enter the access key to open this prototype.</div>
+      </div>
+      <div class="auth-field">
+        <label>Access key</label>
+        <div class="inp-wrap">
+          <input type="password" id="lockInput" placeholder="••••••••" autocomplete="off"
+            onkeydown="if(event.key==='Enter')tryUnlock()">
+          <button class="eye-btn" onclick="toggleEye('lockInput',this)" tabindex="-1"><i class="ti ti-eye"></i></button>
+        </div>
+      </div>
+      <div class="auth-err" id="lockErr"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('lockModal')">Cancel</button>
+      <button class="btn primary" onclick="tryUnlock()"><i class="ti ti-lock-open"></i> Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOTYPE KEY MODAL -->
+<div class="modal-overlay" id="protoKeyModal">
+  <div class="modal narrow">
+    <div class="modal-header">
+      <span class="modal-title"><i class="ti ti-lock"></i> Prototype Access Key</span>
+      <button class="modal-close" onclick="closeModal('protoKeyModal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:4px">
+        This key gates all protected cards. Per-card keys override it. Default: <code style="background:var(--bg2);padding:1px 5px;border-radius:4px">proto123</code>
+      </div>
+      <div class="field"><label>Current key</label><div class="inp-wrap"><input type="password" id="pk_cur"><button class="eye-btn" onclick="toggleEye('pk_cur',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
+      <div class="field"><label>New key (min 4 chars)</label><div class="inp-wrap"><input type="password" id="pk_new"><button class="eye-btn" onclick="toggleEye('pk_new',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
+      <div class="field"><label>Confirm new key</label><div class="inp-wrap"><input type="password" id="pk_cfm"><button class="eye-btn" onclick="toggleEye('pk_cfm',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
+      <div class="auth-err" id="pkErr"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('protoKeyModal')">Cancel</button>
+      <button class="btn primary" onclick="saveProtoKey()"><i class="ti ti-check"></i> Update key</button>
     </div>
   </div>
 </div>
@@ -886,6 +951,19 @@ async function initSync(){
   // Also attempt sheet sync in background
   if(getSheetUrl()) await fetchSheet(true);
   render();
+  // auto-refresh
+  let _lastFetch = Date.now();
+  setInterval(async ()=>{
+    if(hasUnpublished) return;
+    const ok = await loadCatalogFromServer();
+    if(ok){ _lastFetch=Date.now(); render(); }
+  }, 5*60*1000);
+  document.addEventListener('visibilitychange', async ()=>{
+    if(document.hidden || hasUnpublished) return;
+    if(Date.now()-_lastFetch < 2*60*1000) return;
+    const ok = await loadCatalogFromServer();
+    if(ok){ _lastFetch=Date.now(); render(); }
+  });
 }
 
 function updateSheetSyncUI(){
@@ -997,6 +1075,7 @@ function buildCard(c, g){
       <img src="${src}" loading="lazy" alt="${esc(c.title)}"
         onerror="tbFail(this,'${esc(c.url)}',1,'${col}')">
       <div class="thumb-overlay"></div>
+      ${c.locked?`<div class="lock-badge" title="Protected — access key required"><i class="ti ti-lock"></i></div>`:''}
     </div>
     <div class="card-body">
       <span class="card-tag" style="color:${col};border-color:${col}28;background:${col}10">${c.tag||''}</span>
@@ -1031,6 +1110,7 @@ function goCard(e, id){
   if(e.target.closest('.btn')) return;
   const c = data.cards.find(x=>x.id===id);
   if(!c) return;
+  if(c.locked && !isUnlocked(id)){ openLockGate(c); return; }
   c.newTab ? window.open(c.url,'_blank') : window.location.href = c.url;
 }
 
@@ -1103,6 +1183,9 @@ function openAddCard(preGrp){
   ['f_url','f_title','f_tag','f_desc','f_size','f_thumb'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('f_faded').checked=false;
   document.getElementById('f_newtab').checked=false;
+  document.getElementById('f_locked').checked=false;
+  document.getElementById('f_lockKey').value='';
+  document.getElementById('f_lockKey_wrap').style.display='none';
   selColor=COLORS[0]; currentThumbUrl='';
   document.getElementById('thumbPreview').innerHTML=`<div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Auto from URL</div>`;
   buildGrpSelect(preGrp||(data.groups[0]||{}).id);
@@ -1122,6 +1205,9 @@ function openEditCard(id){
   document.getElementById('f_thumb').value=c.thumbUrl||'';
   document.getElementById('f_faded').checked=!!c.faded;
   document.getElementById('f_newtab').checked=!!c.newTab;
+  document.getElementById('f_locked').checked=!!c.locked;
+  document.getElementById('f_lockKey').value=c.lockKey||'';
+  document.getElementById('f_lockKey_wrap').style.display=c.locked?'':'none';
   selColor=c.color||COLORS[0]; currentThumbUrl=c.thumbUrl||'';
   buildGrpSelect(c.group);
   buildSwatches('colorSwatches', selColor, col=>selColor=col);
@@ -1138,6 +1224,8 @@ function saveCard(){
     desc:document.getElementById('f_desc').value.trim(), size:document.getElementById('f_size').value.trim(),
     color:selColor, thumbUrl:currentThumbUrl||'',
     faded:document.getElementById('f_faded').checked, newTab:document.getElementById('f_newtab').checked,
+    locked:document.getElementById('f_locked').checked,
+    lockKey:document.getElementById('f_lockKey').value.trim()||'',
   };
   if(editCardId){ const i=data.cards.findIndex(c=>c.id===editCardId); if(i>=0) data.cards[i]=card; }
   else data.cards.push(card);
@@ -1201,6 +1289,69 @@ function removeGrp(id){
   data.groups=data.groups.filter(g=>g.id!==id);
   data.cards=data.cards.filter(c=>c.group!==id);
   persist(); renderGrpList(); showToast('Group removed.','ok');
+}
+
+/* ═══════════════════════════════
+   LOCK / ACCESS CONTROL
+═══════════════════════════════ */
+function getProtoKey(){ return localStorage.getItem('hub_proto_key') || 'proto123'; }
+function setProtoKey(k){ localStorage.setItem('hub_proto_key', k); }
+
+function isUnlocked(id){
+  try{ return JSON.parse(sessionStorage.getItem('hub_unlocked')||'[]').includes(id); }catch{ return false; }
+}
+function markUnlocked(id){
+  try{
+    const arr = JSON.parse(sessionStorage.getItem('hub_unlocked')||'[]');
+    if(!arr.includes(id)){ arr.push(id); sessionStorage.setItem('hub_unlocked', JSON.stringify(arr)); }
+  }catch{}
+}
+
+let _lockTarget = null;
+function openLockGate(card){
+  _lockTarget = card;
+  document.getElementById('lockTitle').textContent = card.title;
+  document.getElementById('lockInput').value='';
+  document.getElementById('lockErr').textContent='';
+  openModal('lockModal');
+  setTimeout(()=>document.getElementById('lockInput').focus(),120);
+}
+function tryUnlock(){
+  const val = document.getElementById('lockInput').value;
+  if(!_lockTarget) return;
+  const expected = _lockTarget.lockKey || getProtoKey();
+  if(val === expected){
+    markUnlocked(_lockTarget.id);
+    closeModal('lockModal');
+    const c = _lockTarget; _lockTarget = null;
+    c.newTab ? window.open(c.url,'_blank') : window.location.href = c.url;
+  }else{
+    const err = document.getElementById('lockErr');
+    err.textContent = 'Incorrect key.';
+    const box = document.getElementById('lockBox');
+    box.classList.add('auth-shake');
+    setTimeout(()=>{ box.classList.remove('auth-shake'); err.textContent=''; }, 420);
+  }
+}
+
+function openProtoKey(){
+  document.getElementById('pk_cur').value='';
+  document.getElementById('pk_new').value='';
+  document.getElementById('pk_cfm').value='';
+  document.getElementById('pkErr').textContent='';
+  openModal('protoKeyModal');
+}
+function saveProtoKey(){
+  const cur=document.getElementById('pk_cur').value;
+  const nw=document.getElementById('pk_new').value;
+  const cf=document.getElementById('pk_cfm').value;
+  const err=document.getElementById('pkErr');
+  if(cur !== getProtoKey()){ err.textContent='Current key is wrong.'; return; }
+  if(nw.length<4){ err.textContent='Min 4 characters.'; return; }
+  if(nw!==cf){ err.textContent='Keys do not match.'; return; }
+  setProtoKey(nw);
+  closeModal('protoKeyModal');
+  showToast('Prototype key updated.','ok');
 }
 
 /* ═══════════════════════════════════════════════════════
