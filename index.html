@@ -1329,7 +1329,7 @@ async function tryUnlock(){
   const err = document.getElementById('lockErr');
   _unlocking = true; err.textContent='';
   try{
-    const res = await fetch('/.netlify/functions/unlock', {
+    const res = await fetch('/api/unlock', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ id:_lockTarget.id, key })
     });

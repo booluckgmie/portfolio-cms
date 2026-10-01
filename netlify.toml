@@ -1,10 +1,16 @@
 [build]
-  publish = "."
+  publish = "dist"
   command = "node scripts/build.mjs"
 
 [functions]
   directory = "netlify/functions"
-  included_files = ["netlify/private/links.json"]
+  included_files = ["private/links.json"]
+
+# One neutral endpoint for both hosts (Vercel serves api/unlock.js at the same path).
+[[redirects]]
+  from = "/api/unlock"
+  to = "/.netlify/functions/unlock"
+  status = 200
 
 [[headers]]
   for = "/data/*.json"
@@ -17,31 +23,3 @@
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
-
-# Publish dir is the repo root, so shadow everything that must stay private
-# (the source catalog holds the real URLs of locked projects).
-[[redirects]]
-  from = "/content/*"
-  to = "/404.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/netlify/*"
-  to = "/404.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/scripts/*"
-  to = "/404.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/.github/*"
-  to = "/404.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/appscript.gs"
-  to = "/404.html"
-  status = 404
-  force = true
