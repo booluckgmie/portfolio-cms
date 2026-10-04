@@ -1235,7 +1235,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-03T23:40:33.234Z",
+      "updated": "2026-10-04T12:06:07.945Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-03T06:07:21.599Z",
+      "updated": "2026-10-04T06:42:48.291Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1478,7 +1478,7 @@
     },
     {
       "id": "p_jagamrt",
-      "url": "https://jagamrt-my-ketapang.vercel.app",
+      "url": "https://jagamrt.vercel.app",
       "title": "Jagamrt",
       "tag": "Vercel",
       "desc": "Live on Vercel · updated 2026-10-04.",
@@ -1489,9 +1489,10 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/jagamrt",
       "platforms": [
-        "vercel"
+        "vercel",
+        "github"
       ],
-      "updated": "2026-10-04T04:46:52Z",
+      "updated": "2026-10-04T11:12:40.899Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1503,7 +1504,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://sharecode-tawny.vercel.app",
+      "url": "https://bursamy.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Live on Vercel & GitHub · updated 2026-10-04.",
@@ -1517,7 +1518,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-04T04:42:12.546Z",
+      "updated": "2026-10-04T11:38:25.761Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1605,7 +1606,254 @@
         "github:drmc_stat",
         "github:podac"
       ]
+    },
+    {
+      "id": "p_asset-monitor",
+      "url": "https://comcenter-analytics.netlify.app",
+      "title": "Asset Monitor",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2026-06-04.",
+      "group": "dev",
+      "icon": "brand-javascript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/asset-monitor",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2026-06-04T13:56:41.966Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a2183f5ae33370008bcbc08/screenshot_2026-06-04-13-56-42-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:e2a8ac76-1651-46d4-986e-5f2debcbeb1f",
+        "github:asset-monitor"
+      ]
+    },
+    {
+      "id": "p_mylabour-market",
+      "url": "https://mylabour-market.netlify.app",
+      "title": "Mylabour Market",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2026-05-16.",
+      "group": "dev",
+      "icon": "",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2026-05-16T04:35:29.524Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a07f40eeaf8e773654cc210/screenshot_2026-05-16-04-35-29-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:03e1ee4d-f756-4d25-b947-4527e1c9064e"
+      ]
+    },
+    {
+      "id": "p_dspath-test",
+      "url": "https://dspath-test.netlify.app",
+      "title": "Dspath Test",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2026-05-16.",
+      "group": "dev",
+      "icon": "",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2026-05-16T04:28:54.957Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:6f46e0d8-62d6-49a6-9506-ce46002910af"
+      ]
+    },
+    {
+      "id": "p_spm-personality",
+      "url": "https://spm-personality.netlify.app",
+      "title": "Spm Personality",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2026-04-01.",
+      "group": "dev",
+      "icon": "",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2026-04-01T03:02:55.871Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/69cc8adc1d6e91b925db7885/screenshot_2026-04-01-03-02-56-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:ffdfe7d1-f52d-4e91-8e89-e06888dc7670"
+      ]
+    },
+    {
+      "id": "p_slidespark",
+      "url": "https://superlative-buttercream-78ac4c.netlify.app",
+      "title": "Slidespark",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-07-06.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/slidespark",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-07-06T15:43:43.135Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/686a996a77bb48000829721f/screenshot_2025-07-06-15-43-43-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:a454f773-cd1a-407f-9a1e-474c8c026d7b",
+        "github:slidespark"
+      ]
+    },
+    {
+      "id": "p_vmp-gtrends",
+      "url": "https://venerable-sopapillas-c6a0f2.netlify.app",
+      "title": "Vmp Gtrends",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-05-20.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/vmp-gtrends",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-05-20T03:08:19.846Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/682bf1cc87aacc8078f3e7b9/screenshot_2025-05-20-03-08-20-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:f53b15e7-57d1-4e8a-86ab-33305a1ef789",
+        "github:vmp-gtrends"
+      ]
+    },
+    {
+      "id": "p_litarticle-scoop",
+      "url": "https://elaborate-dusk-b4acb9.netlify.app",
+      "title": "LitArticle Scoop",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-05-02.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/LitArticle-Scoop",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-05-02T14:01:55.945Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6814d013658b020008c2e475/screenshot_2025-05-02-14-01-56-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:c2e58e4d-991d-42b6-9edb-0ffda07d9e71",
+        "github:LitArticle-Scoop"
+      ]
+    },
+    {
+      "id": "p_ownbudgetapp",
+      "url": "https://sprightly-snickerdoodle-64b3e5.netlify.app",
+      "title": "Ownbudgetapp",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-04-28.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/ownbudgetapp",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-04-28T07:40:00.665Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/680f307a4592828bf46905b1/screenshot_2025-04-28-07-40-01-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:76a5cd3f-c1e4-4ae3-9bc9-ea2f069f63cb",
+        "github:ownbudgetapp"
+      ]
+    },
+    {
+      "id": "p_firebase-ic2pdf",
+      "url": "https://exquisite-dodol-d56aff.netlify.app",
+      "title": "Firebase Ic2pdf",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-04-22.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/firebase-ic2pdf",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-04-22T16:17:54.049Z",
+      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6807c0d950ac850795843bc2/screenshot_2025-04-22-16-17-54-0000.webp",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:42296c2c-219a-4d60-a210-3ee8a3fe0245",
+        "github:firebase-ic2pdf"
+      ]
+    },
+    {
+      "id": "p_studio",
+      "url": "https://peaceful-cassata-bfd3f6.netlify.app",
+      "title": "Studio",
+      "tag": "Netlify",
+      "desc": "Live on Netlify · updated 2025-04-10.",
+      "group": "dev",
+      "icon": "brand-typescript",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/studio",
+      "platforms": [
+        "netlify"
+      ],
+      "updated": "2025-04-10T07:48:10Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "netlify:3f572512-baca-4409-ac1d-5e4259cdb78c",
+        "github:studio"
+      ]
     }
   ],
-  "_synced": "2026-10-04T04:58:23.494Z"
+  "_synced": "2026-10-04T12:26:44.560Z"
 }
