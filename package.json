@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-cms",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "sync": "node scripts/sync.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

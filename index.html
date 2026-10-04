@@ -203,6 +203,13 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
   .field-row{grid-template-columns:1fr}
   .auth-box{padding:28px 22px 24px}
 }
+/* ICON THUMB */
+.thumb-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.thumb-icon .ti-big{width:68px;height:68px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:34px;transition:transform .3s}
+.card:hover .thumb-icon .ti-big{transform:scale(1.1) rotate(-4deg)}
+.thumb-icon .plat{position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);z-index:1}
+.repo-link{color:var(--text3);font-size:15px;display:inline-flex;transition:color .15s}
+.repo-link:hover{color:var(--text)}
 /* LOCK */
 .lock-badge{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;background:rgba(13,15,20,.85);border:1px solid rgba(255,183,77,.4);display:flex;align-items:center;justify-content:center;z-index:3;backdrop-filter:blur(4px)}
 .lock-badge i{font-size:13px;color:#ffa94d}
@@ -215,7 +222,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
   <div class="auth-box" id="authBox">
     <div class="auth-logo">N</div>
     <div class="auth-title">Project Hub</div>
-    <div class="auth-sub">Login as admin to add, edit, and manage links.<br>Guests can browse the full catalog.</div>
+    <div class="auth-sub">Admin login — add, edit and publish links.</div>
     <div class="auth-field">
       <label>Admin Key</label>
       <div class="inp-wrap">
@@ -227,8 +234,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
     <div class="auth-err" id="authErr"></div>
     <button class="auth-btn" onclick="tryLogin()"><i class="ti ti-lock-open"></i> Login as Admin</button>
     <div class="auth-divider"><span>or</span></div>
-    <button class="auth-btn ghost" onclick="loginGuest()"><i class="ti ti-eye"></i> Continue as Guest</button>
-    <div class="auth-hint">First-time default key: <b>admin123</b><br>Change it after login in Admin Settings.</div>
+    <button class="auth-btn ghost" onclick="loginGuest()"><i class="ti ti-arrow-left"></i> Back to site</button>
   </div>
 </div>
 
@@ -312,17 +318,17 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
     <div class="modal-body">
       <div class="field">
         <label>URL / path *</label>
-        <input type="text" id="f_url" placeholder="https://… or relative.html" oninput="onUrlInput(this.value)">
-        <span class="field-hint">Thumbnail auto-loads from URL. For relative paths, uses your Netlify domain.</span>
+        <input type="text" id="f_url" placeholder="https://… or relative.html">
+        <span class="field-hint">For protected cards the real link is hidden from the public page. Leave blank when editing one to keep its saved link.</span>
       </div>
       <div class="field">
         <label>Thumbnail</label>
         <div class="thumb-preview" id="thumbPreview">
-          <div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Auto from URL</div>
+          <div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Icon tile (default)</div>
         </div>
         <div class="thumb-actions">
-          <button class="btn sm" onclick="reloadThumb()"><i class="ti ti-refresh"></i> Reload</button>
-          <input type="text" id="f_thumb" placeholder="Or paste custom image URL…"
+          <button class="btn sm" onclick="reloadThumb()"><i class="ti ti-camera"></i> Screenshot</button>
+          <input type="text" id="f_thumb" placeholder="Optional image URL (blank = icon)…"
             style="flex:1;font-size:12px;padding:5px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);outline:none"
             oninput="onCustomThumb(this.value)">
         </div>
@@ -336,14 +342,13 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
         <div class="field"><label>Size / badge</label><input type="text" id="f_size" placeholder="22 KB"></div>
         <div class="field"><label>Group</label><select id="f_group"></select></div>
       </div>
+      <div class="field"><label>Icon <span style="color:var(--text3);font-weight:400">(Tabler name, e.g. rocket, brand-react — blank = group icon)</span></label><input type="text" id="f_icon" placeholder="rocket"></div>
       <div class="field"><label>Accent colour</label><div class="swatches" id="colorSwatches"></div></div>
       <label class="check-row"><input type="checkbox" id="f_faded"> Archive / faded</label>
       <label class="check-row"><input type="checkbox" id="f_newtab"> Open in new tab</label>
       <div style="border-top:1px solid var(--border);padding-top:10px;margin-top:4px">
-        <label class="check-row"><input type="checkbox" id="f_locked" onchange="document.getElementById('f_lockKey_wrap').style.display=this.checked?'':'none'"> Protected — requires key to open</label>
-        <div id="f_lockKey_wrap" style="display:none;margin-top:8px">
-          <div class="field"><label>Custom key <span style="color:var(--text3);font-weight:400">(blank = global prototype key)</span></label><input type="text" id="f_lockKey" placeholder="Leave blank for global key"></div>
-        </div>
+        <label class="check-row"><input type="checkbox" id="f_locked"> Protected — password required to open</label>
+        <span class="field-hint" style="display:block;margin-top:6px">The link is removed from the public site and only released by the server after the right password. Passwords live in Netlify env vars (<code>ACCESS_KEY</code>, optional per-card <code>ACCESS_KEYS</code>) — see README.</span>
       </div>
     </div>
     <div class="modal-footer">
@@ -400,9 +405,6 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <button class="btn" onclick="closeModal('adminModal');openSheetModal()" style="width:100%;justify-content:flex-start">
         <i class="ti ti-table-options"></i> Google Sheet connection
       </button>
-      <button class="btn" onclick="closeModal('adminModal');openProtoKey()" style="width:100%;justify-content:flex-start">
-        <i class="ti ti-lock"></i> Prototype access key
-      </button>
       <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px">
         <button class="btn danger" onclick="closeModal('adminModal');confirmReset()" style="width:100%;justify-content:flex-start">
           <i class="ti ti-refresh-alert"></i> Reset catalog to defaults
@@ -445,7 +447,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
     <div class="modal-body">
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;font-size:12px;color:var(--text2);line-height:1.7">
         <b style="color:var(--text);display:flex;align-items:center;gap:6px;margin-bottom:6px"><i class="ti ti-info-circle"></i> How publishing works</b>
-        Admin changes are saved locally first. Click <b>Publish</b> to commit <code style="background:var(--bg2);padding:1px 5px;border-radius:4px">portfolio-cms/data/catalog.json</code>
+        Admin changes are saved locally first. Click <b>Publish</b> to commit <code style="background:var(--bg2);padding:1px 5px;border-radius:4px">content/catalog.json</code>
         to GitHub. Netlify detects the commit and rebuilds the site in ~30 seconds.
       </div>
       <div class="field-row">
@@ -454,7 +456,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       </div>
       <div class="field-row">
         <div class="field"><label>Branch</label><input type="text" id="gh_branch" placeholder="master"></div>
-        <div class="field"><label>File path in repo *</label><input type="text" id="gh_path" placeholder="portfolio-cms/data/catalog.json"></div>
+        <div class="field"><label>File path in repo *</label><input type="text" id="gh_path" placeholder="content/catalog.json"></div>
       </div>
       <div class="field">
         <label>Personal Access Token *
@@ -585,7 +587,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <div style="text-align:center;padding:4px 0 8px">
         <div style="width:52px;height:52px;border-radius:16px;background:rgba(255,169,77,.1);border:1px solid rgba(255,169,77,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;color:#ffa94d"><i class="ti ti-lock"></i></div>
         <div style="font-size:15px;font-weight:600;margin-bottom:4px" id="lockTitle"></div>
-        <div style="font-size:12px;color:var(--text2)">Enter the access key to open this prototype.</div>
+        <div style="font-size:12px;color:var(--text2)">This project is private. Enter the password to open it.</div>
       </div>
       <div class="auth-field">
         <label>Access key</label>
@@ -600,29 +602,6 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
     <div class="modal-footer">
       <button class="btn" onclick="closeModal('lockModal')">Cancel</button>
       <button class="btn primary" onclick="tryUnlock()"><i class="ti ti-lock-open"></i> Unlock</button>
-    </div>
-  </div>
-</div>
-
-<!-- PROTOTYPE KEY MODAL -->
-<div class="modal-overlay" id="protoKeyModal">
-  <div class="modal narrow">
-    <div class="modal-header">
-      <span class="modal-title"><i class="ti ti-lock"></i> Prototype Access Key</span>
-      <button class="modal-close" onclick="closeModal('protoKeyModal')"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="modal-body">
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:4px">
-        This key gates all protected cards. Per-card keys override it. Default: <code style="background:var(--bg2);padding:1px 5px;border-radius:4px">proto123</code>
-      </div>
-      <div class="field"><label>Current key</label><div class="inp-wrap"><input type="password" id="pk_cur"><button class="eye-btn" onclick="toggleEye('pk_cur',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
-      <div class="field"><label>New key (min 4 chars)</label><div class="inp-wrap"><input type="password" id="pk_new"><button class="eye-btn" onclick="toggleEye('pk_new',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
-      <div class="field"><label>Confirm new key</label><div class="inp-wrap"><input type="password" id="pk_cfm"><button class="eye-btn" onclick="toggleEye('pk_cfm',this)" tabindex="-1"><i class="ti ti-eye"></i></button></div></div>
-      <div class="auth-err" id="pkErr"></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" onclick="closeModal('protoKeyModal')">Cancel</button>
-      <button class="btn primary" onclick="saveProtoKey()"><i class="ti ti-check"></i> Update key</button>
     </div>
   </div>
 </div>
@@ -695,7 +674,11 @@ function setSheetUrl(u){ localStorage.setItem('hub_sheet_url', u); }
 
 /* ─── GITHUB CONFIG ─── */
 function getGHConfig(){
-  try{ return JSON.parse(localStorage.getItem('hub_gh_config')) || {}; }catch{ return {}; }
+  try{
+    const c = JSON.parse(localStorage.getItem('hub_gh_config')) || {};
+    if(/(^|\/)data\/catalog\.json$/.test(c.path||'')) c.path = 'content/catalog.json'; // source moved
+    return c;
+  }catch{ return {}; }
 }
 function setGHConfig(cfg){ localStorage.setItem('hub_gh_config', JSON.stringify(cfg)); }
 
@@ -750,7 +733,7 @@ function openGHSettings(){
   document.getElementById('gh_owner').value = cfg.owner || '';
   document.getElementById('gh_repo').value = cfg.repo || '';
   document.getElementById('gh_branch').value = cfg.branch || 'master';
-  document.getElementById('gh_path').value = cfg.path || 'portfolio-cms/data/catalog.json';
+  document.getElementById('gh_path').value = cfg.path || 'content/catalog.json';
   document.getElementById('gh_token').value = cfg.token || '';
   openModal('ghModal');
 }
@@ -759,7 +742,7 @@ function saveGHSettings(){
     owner: document.getElementById('gh_owner').value.trim(),
     repo:  document.getElementById('gh_repo').value.trim(),
     branch:document.getElementById('gh_branch').value.trim() || 'master',
-    path:  document.getElementById('gh_path').value.trim() || 'portfolio-cms/data/catalog.json',
+    path:  document.getElementById('gh_path').value.trim() || 'content/catalog.json',
     token: document.getElementById('gh_token').value.trim(),
   };
   if(!cfg.owner || !cfg.repo || !cfg.token){ showToast('Owner, repo, and token are required.','err'); return; }
@@ -778,16 +761,28 @@ async function publishToGitHub(){
 
   try{
     const branch = cfg.branch || 'master';
-    const filePath = cfg.path || 'portfolio-cms/data/catalog.json';
+    const filePath = cfg.path || 'content/catalog.json';
     const apiBase = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${filePath}`;
     const headers = { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' };
 
     // Get current SHA (needed for update)
     let sha;
     const getRes = await fetch(`${apiBase}?ref=${branch}`, { headers });
-    if(getRes.ok){ sha = (await getRes.json()).sha; }
-
-    const content = JSON.stringify({...data, _synced: new Date().toISOString()}, null, 2);
+    let existing = {};
+    if(getRes.ok){
+      const f = await getRes.json(); sha = f.sha;
+      try{ existing = JSON.parse(decodeURIComponent(escape(atob(f.content.replace(/\n/g,''))))); }catch{}
+    }
+    // The public page hides protected links; restore them from the source file so they aren't wiped.
+    const oldCards = Object.fromEntries((existing.cards||[]).map(c=>[c.id,c]));
+    const outCards = data.cards.map(c=>{
+      const o = oldCards[c.id] || {};
+      return {
+        ...(o.auto!==undefined?{auto:o.auto}:{}), ...(o.sourceKeys?{sourceKeys:o.sourceKeys}:{}), ...(o.gone?{gone:o.gone}:{}),
+        ...c, url: c.url || (c.locked ? o.url : '') || '',
+      };
+    });
+    const content = JSON.stringify({...data, cards: outCards, _synced: new Date().toISOString()}, null, 2);
     const encoded = btoa(unescape(encodeURIComponent(content)));
     const body = { message:'📦 Update catalog via Project Hub admin', content: encoded, branch };
     if(sha) body.sha = sha;
@@ -940,10 +935,13 @@ function doLogout(){
   showToast('Exited admin mode.','info');
   document.getElementById('authInput').value='';
   document.getElementById('authErr').textContent='';
-  document.getElementById('authOverlay').style.display='flex';
+  render();
 }
 
+let _syncStarted=false;
 async function initSync(){
+  if(_syncStarted){ render(); return; }
+  _syncStarted=true;
   updateSheetSyncUI(); render();
   // Load canonical catalog from server, then re-render
   const loaded = await loadCatalogFromServer();
@@ -1047,14 +1045,14 @@ function renderCatalog(){
     const cards = data.cards.filter(c=>{
       if(c.group!==g.id) return false;
       if(activeFilter!=='all' && activeFilter!==g.id) return false;
-      if(q && !(c.title+c.desc+c.tag+c.url).toLowerCase().includes(q)) return false;
+      if(q && ![c.title,c.desc,c.tag,c.url,c.repo].join(' ').toLowerCase().includes(q)) return false;
       return true;
     });
     if(!cards.length) return;
     total += cards.length;
     html+=`<div class="section-group" data-group="${g.id}">
       <div class="group-header">
-        <span class="g-label"><i class="ti ti-${g.icon}"></i>${g.label}</span>
+        <span class="g-label"><i class="ti ti-${h(g.icon)}"></i>${h(g.label)}</span>
         <div class="g-line"></div>
         <span class="g-count">${cards.length}</span>
         ${isAdmin?`<div class="g-btns"><button class="btn sm" onclick="openAddCard('${g.id}')"><i class="ti ti-plus"></i></button></div>`:''}
@@ -1066,52 +1064,63 @@ function renderCatalog(){
   document.getElementById('emptyState').style.display = total===0 ? 'block' : 'none';
 }
 
+const PLAT_LABEL = { netlify:'Netlify', vercel:'Vercel', github:'GitHub' };
+function hostLabel(c){
+  if(c.locked) return 'Private project';
+  if(!c.url) return '';
+  try{ const u=new URL(c.url,location.href); return (u.host===location.host ? u.pathname.replace(/^\//,'') : u.host+(u.pathname==='/'?'':u.pathname)); }
+  catch{ return c.url; }
+}
+function iconTile(c, g, col){
+  const icon = c.icon || g.icon || 'world';
+  const plat = (c.platforms||[]).map(p=>PLAT_LABEL[p]||p).join(' · ');
+  return `<div class="thumb-icon" style="background:radial-gradient(circle at 30% 20%,${col}26,transparent 65%),${hex2dark(col)}">
+    <div class="ti-big" style="background:${col}1c;color:${col};border:1px solid ${col}40"><i class="ti ti-${h(icon)}"></i></div>
+    ${plat?`<span class="plat">${h(plat)}</span>`:''}
+  </div>`;
+}
 function buildCard(c, g){
-  const col = c.color || g.color || '#4f7cff';
-  const dark = hex2dark(col);
-  const src = c.thumbUrl || thumbSrc(c.url, 0);
-  return `<div class="card${c.faded?' faded':''}" onclick="goCard(event,'${c.id}')">
-    <div class="thumb" style="background:${dark}">
-      <img src="${src}" loading="lazy" alt="${esc(c.title)}"
-        onerror="tbFail(this,'${esc(c.url)}',1,'${col}')">
+  const col = /^#[0-9a-f]{3,8}$/i.test(c.color||'') ? c.color : (g.color || '#4f7cff');
+  // Locked projects never use a screenshot (it would show the private page). Others: optional image, else icon tile.
+  const useImg = c.thumbUrl && !c.locked && /^(https?:)?\/\//.test(c.thumbUrl);
+  const thumb = useImg
+    ? `<img src="${h(c.thumbUrl)}" loading="lazy" alt="" onerror="this.remove()">`
+    : '';
+  const repo = /^https:\/\/github\.com\//.test(c.repo||'')
+    ? `<a class="repo-link" href="${h(c.repo)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Source on GitHub"><i class="ti ti-brand-github"></i></a>` : '';
+  return `<div class="card${c.faded?' faded':''}" onclick="goCard(event,'${h(c.id)}')">
+    <div class="thumb" style="background:${hex2dark(col)}">
+      ${iconTile(c,g,col)}${thumb}
       <div class="thumb-overlay"></div>
-      ${c.locked?`<div class="lock-badge" title="Protected — access key required"><i class="ti ti-lock"></i></div>`:''}
+      ${c.locked?`<div class="lock-badge" title="Private — password required"><i class="ti ti-lock"></i></div>`:''}
     </div>
     <div class="card-body">
-      <span class="card-tag" style="color:${col};border-color:${col}28;background:${col}10">${c.tag||''}</span>
-      <div class="card-title">${c.title}</div>
-      <div class="card-desc">${c.desc||''}</div>
+      <span class="card-tag" style="color:${col};border-color:${col}28;background:${col}10">${h(c.tag||'')}</span>
+      <div class="card-title">${h(c.title)}</div>
+      <div class="card-desc">${h(c.desc||'')}</div>
     </div>
     <div class="card-footer">
-      <span class="card-fn">${c.url}${c.size?' · '+c.size:''}</span>
+      <span class="card-fn">${h(hostLabel(c))}${c.size?' · '+h(c.size):''}</span>
       <div class="card-actions">
-        ${isAdmin?`<button class="btn sm" onclick="event.stopPropagation();openEditCard('${c.id}')" title="Edit"><i class="ti ti-edit"></i></button>
-        <button class="btn sm danger" onclick="event.stopPropagation();doDeleteCard('${c.id}')" title="Remove"><i class="ti ti-trash"></i></button>`:''}
-        <i class="ti ti-${c.newTab?'external-link':'arrow-right'} card-arr"></i>
+        ${repo}
+        ${isAdmin?`<button class="btn sm" onclick="event.stopPropagation();openEditCard('${h(c.id)}')" title="Edit"><i class="ti ti-edit"></i></button>
+        <button class="btn sm danger" onclick="event.stopPropagation();doDeleteCard('${h(c.id)}')" title="Remove"><i class="ti ti-trash"></i></button>`:''}
+        <i class="ti ti-${c.locked?'lock':(c.newTab?'external-link':'arrow-right')} card-arr"></i>
       </div>
     </div>
   </div>`;
-}
-
-function tbFail(img, url, idx, col){
-  if(idx < THUMB_SVC.length){
-    img.onerror = () => tbFail(img, url, idx+1, col);
-    img.src = thumbSrc(url, idx);
-  }else{
-    const p = img.parentElement;
-    p.innerHTML=`<div class="thumb-fallback" style="background:${hex2dark(col)}">
-      <div class="fb-icon" style="background:${col}18;color:${col}"><i class="ti ti-globe" style="font-size:20px"></i></div>
-      <div class="fb-url">${url}</div>
-    </div><div class="thumb-overlay"></div>`;
-  }
 }
 
 function goCard(e, id){
   if(e.target.closest('.btn')) return;
   const c = data.cards.find(x=>x.id===id);
   if(!c) return;
-  if(c.locked && !isUnlocked(id)){ openLockGate(c); return; }
-  c.newTab ? window.open(c.url,'_blank') : window.location.href = c.url;
+  if(c.locked){
+    const u = unlockedUrl(id);
+    if(u){ openCard(c,u); return; }
+    openLockGate(c); return;
+  }
+  if(c.url) openCard(c,c.url);
 }
 
 function setFilter(f){ activeFilter = f; render(); }
@@ -1142,9 +1151,8 @@ function buildGrpSelect(sel){
   const el = document.getElementById('f_group');
   el.innerHTML = data.groups.map(g=>`<option value="${g.id}"${g.id===sel?' selected':''}>${g.label}</option>`).join('');
 }
-function onUrlInput(v){ clearTimeout(thumbDebounce); thumbDebounce=setTimeout(()=>{ if(v.trim()) loadThumbPreview(v.trim()); }, 700); }
 function onCustomThumb(v){
-  if(!v.trim()){ const url=document.getElementById('f_url').value.trim(); if(url) loadThumbPreview(url); return; }
+  if(!v.trim()){ currentThumbUrl=''; document.getElementById('thumbPreview').innerHTML=`<div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Icon tile (default)</div>`; return; }
   showThumbImg(v.trim()); currentThumbUrl = v.trim();
 }
 function reloadThumb(){
@@ -1180,14 +1188,13 @@ function openAddCard(preGrp){
   editCardId=null;
   document.getElementById('cardModalTitle').innerHTML='<i class="ti ti-link"></i> Add link';
   document.getElementById('delCardBtn').style.display='none';
-  ['f_url','f_title','f_tag','f_desc','f_size','f_thumb'].forEach(id=>document.getElementById(id).value='');
+  ['f_url','f_title','f_tag','f_desc','f_size','f_thumb','f_icon'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('f_faded').checked=false;
   document.getElementById('f_newtab').checked=false;
   document.getElementById('f_locked').checked=false;
-  document.getElementById('f_lockKey').value='';
-  document.getElementById('f_lockKey_wrap').style.display='none';
+  document.getElementById('f_icon').value='';
   selColor=COLORS[0]; currentThumbUrl='';
-  document.getElementById('thumbPreview').innerHTML=`<div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Auto from URL</div>`;
+  document.getElementById('thumbPreview').innerHTML=`<div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Icon tile (default)</div>`;
   buildGrpSelect(preGrp||(data.groups[0]||{}).id);
   buildSwatches('colorSwatches', selColor, c=>selColor=c);
   openModal('cardModal');
@@ -1206,28 +1213,28 @@ function openEditCard(id){
   document.getElementById('f_faded').checked=!!c.faded;
   document.getElementById('f_newtab').checked=!!c.newTab;
   document.getElementById('f_locked').checked=!!c.locked;
-  document.getElementById('f_lockKey').value=c.lockKey||'';
-  document.getElementById('f_lockKey_wrap').style.display=c.locked?'':'none';
+  document.getElementById('f_icon').value=c.icon||'';
+  document.getElementById('f_url').placeholder=c.locked&&!c.url?'(hidden — leave blank to keep)':'https://… or relative.html';
   selColor=c.color||COLORS[0]; currentThumbUrl=c.thumbUrl||'';
   buildGrpSelect(c.group);
   buildSwatches('colorSwatches', selColor, col=>selColor=col);
-  const prevSrc=c.thumbUrl||thumbSrc(c.url,0);
-  if(prevSrc) showThumbImg(prevSrc);
+  if(c.thumbUrl) showThumbImg(c.thumbUrl);
+  else document.getElementById('thumbPreview').innerHTML=`<div class="preview-ph"><i class="ti ti-photo" style="font-size:22px;display:block;margin-bottom:5px"></i>Icon tile (default)</div>`;
   openModal('cardModal');
 }
 function saveCard(){
   const url=document.getElementById('f_url').value.trim(), title=document.getElementById('f_title').value.trim();
-  if(!url||!title){ showToast('URL and title are required.','err'); return; }
+  const locked=document.getElementById('f_locked').checked;
+  if(!title||(!url&&!(locked&&editCardId))){ showToast('URL and title are required.','err'); return; }
   const card={
     id: editCardId||'c'+Date.now(), group:document.getElementById('f_group').value,
     url, title, tag:document.getElementById('f_tag').value.trim(),
     desc:document.getElementById('f_desc').value.trim(), size:document.getElementById('f_size').value.trim(),
     color:selColor, thumbUrl:currentThumbUrl||'',
     faded:document.getElementById('f_faded').checked, newTab:document.getElementById('f_newtab').checked,
-    locked:document.getElementById('f_locked').checked,
-    lockKey:document.getElementById('f_lockKey').value.trim()||'',
+    locked, icon:document.getElementById('f_icon').value.trim(),
   };
-  if(editCardId){ const i=data.cards.findIndex(c=>c.id===editCardId); if(i>=0) data.cards[i]=card; }
+  if(editCardId){ const i=data.cards.findIndex(c=>c.id===editCardId); if(i>=0) data.cards[i]={...data.cards[i],...card}; }
   else data.cards.push(card);
   persist(); render(); closeModal('cardModal');
   showToast(editCardId?'Link updated.':'Link added.','ok');
@@ -1294,18 +1301,17 @@ function removeGrp(id){
 /* ═══════════════════════════════
    LOCK / ACCESS CONTROL
 ═══════════════════════════════ */
-function getProtoKey(){ return localStorage.getItem('hub_proto_key') || 'proto123'; }
-function setProtoKey(k){ localStorage.setItem('hub_proto_key', k); }
 
-function isUnlocked(id){
-  try{ return JSON.parse(sessionStorage.getItem('hub_unlocked')||'[]').includes(id); }catch{ return false; }
+function unlockedUrl(id){
+  try{ return JSON.parse(sessionStorage.getItem('hub_unlocked')||'{}')[id]||''; }catch{ return ''; }
 }
-function markUnlocked(id){
+function markUnlocked(id,url){
   try{
-    const arr = JSON.parse(sessionStorage.getItem('hub_unlocked')||'[]');
-    if(!arr.includes(id)){ arr.push(id); sessionStorage.setItem('hub_unlocked', JSON.stringify(arr)); }
+    const m = JSON.parse(sessionStorage.getItem('hub_unlocked')||'{}');
+    m[id]=url; sessionStorage.setItem('hub_unlocked', JSON.stringify(m));
   }catch{}
 }
+function openCard(c,url){ c.newTab ? window.open(url,'_blank','noopener') : window.location.href = url; }
 
 let _lockTarget = null;
 function openLockGate(card){
@@ -1316,42 +1322,29 @@ function openLockGate(card){
   openModal('lockModal');
   setTimeout(()=>document.getElementById('lockInput').focus(),120);
 }
-function tryUnlock(){
-  const val = document.getElementById('lockInput').value;
-  if(!_lockTarget) return;
-  const expected = _lockTarget.lockKey || getProtoKey();
-  if(val === expected){
-    markUnlocked(_lockTarget.id);
+let _unlocking=false;
+async function tryUnlock(){
+  if(!_lockTarget || _unlocking) return;
+  const key = document.getElementById('lockInput').value;
+  const err = document.getElementById('lockErr');
+  _unlocking = true; err.textContent='';
+  try{
+    const res = await fetch('/api/unlock', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ id:_lockTarget.id, key })
+    });
+    const out = await res.json().catch(()=>({}));
+    if(!res.ok || !out.url) throw new Error(out.error || 'Could not verify the password.');
+    markUnlocked(_lockTarget.id, out.url);
     closeModal('lockModal');
     const c = _lockTarget; _lockTarget = null;
-    c.newTab ? window.open(c.url,'_blank') : window.location.href = c.url;
-  }else{
-    const err = document.getElementById('lockErr');
-    err.textContent = 'Incorrect key.';
+    openCard(c, out.url);
+  }catch(e){
+    err.textContent = e.message;
     const box = document.getElementById('lockBox');
     box.classList.add('auth-shake');
-    setTimeout(()=>{ box.classList.remove('auth-shake'); err.textContent=''; }, 420);
-  }
-}
-
-function openProtoKey(){
-  document.getElementById('pk_cur').value='';
-  document.getElementById('pk_new').value='';
-  document.getElementById('pk_cfm').value='';
-  document.getElementById('pkErr').textContent='';
-  openModal('protoKeyModal');
-}
-function saveProtoKey(){
-  const cur=document.getElementById('pk_cur').value;
-  const nw=document.getElementById('pk_new').value;
-  const cf=document.getElementById('pk_cfm').value;
-  const err=document.getElementById('pkErr');
-  if(cur !== getProtoKey()){ err.textContent='Current key is wrong.'; return; }
-  if(nw.length<4){ err.textContent='Min 4 characters.'; return; }
-  if(nw!==cf){ err.textContent='Keys do not match.'; return; }
-  setProtoKey(nw);
-  closeModal('protoKeyModal');
-  showToast('Prototype key updated.','ok');
+    setTimeout(()=>box.classList.remove('auth-shake'), 420);
+  }finally{ _unlocking=false; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1528,7 +1521,11 @@ function confirmReset(){
   showToast('Catalog reset to defaults.','ok');
 }
 function handleLogoDot(){
-  if(!isAdmin){ showToast('Login as admin to manage the catalog.','info'); return; }
+  if(!isAdmin){
+    document.getElementById('authOverlay').style.display='flex';
+    setTimeout(()=>document.getElementById('authInput').focus(),80);
+    return;
+  }
   openAdminMenu();
 }
 
@@ -1559,12 +1556,14 @@ function hex2dark(hex){
   catch{ return '#111'; }
 }
 function esc(s){ return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
+function h(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 /* ═══════════════════════════════
    BOOT
 ═══════════════════════════════ */
-document.getElementById('authOverlay').style.display='flex';
-render(); // render with local data immediately so page isn't blank
+document.getElementById('authOverlay').style.display='none';
+render(); // render cached data immediately so the page isn't blank
+initSync(); // then pull the fresh public catalog
 </script>
 </body>
 </html>

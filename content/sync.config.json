@@ -1,0 +1,31 @@
+{
+  "github": {
+    "user": "booluckgmie",
+    "includePrivate": false,
+    "includeForks": false
+  },
+  "netlify": {
+    "enabled": true
+  },
+  "vercel": {
+    "enabled": true,
+    "teamId": "team_YWXoh9J5uvtJSnOIlBq2H8Rl"
+  },
+  "defaultGroup": "dev",
+  "newCardsLocked": false,
+  "ignore": [
+    "portfolio-cms",
+    "project-hub"
+  ],
+  "rules": [],
+  "_rulesExample": [
+    {
+      "match": "payroll|talent",
+      "group": "hr"
+    },
+    {
+      "match": "-private$",
+      "locked": true
+    }
+  ]
+}

@@ -1,5 +1,16 @@
 [build]
-  publish = "."
+  publish = "dist"
+  command = "node scripts/build.mjs"
+
+[functions]
+  directory = "netlify/functions"
+  included_files = ["private/links.json"]
+
+# One neutral endpoint for both hosts (Vercel serves api/unlock.js at the same path).
+[[redirects]]
+  from = "/api/unlock"
+  to = "/.netlify/functions/unlock"
+  status = 200
 
 [[headers]]
   for = "/data/*.json"

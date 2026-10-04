@@ -1,3 +1,6 @@
+// NOTE: this sheet is the legacy source. The recommended flow is now the automatic
+// GitHub/Netlify/Vercel sync (see README.md). Do NOT put passwords in this sheet —
+// the web-app URL is public. Protected-card passwords are Netlify env vars.
 // ═══════════════════════════════════════════════════════════════
 //  PROJECT HUB — Google Apps Script
 //
@@ -106,7 +109,7 @@ function readCards(ss) {
       faded:    (obj.faded  === 'TRUE' || obj.faded  === 'true'  || obj.faded  === '1'),
       newTab:   (obj.newtab === 'TRUE' || obj.newtab === 'true'  || obj.newtab === '1'),
       locked:   (obj.locked  === 'TRUE' || obj.locked  === 'true'  || obj.locked  === '1'),
-      lockKey:  obj.lockkey  || '',
+      icon:     obj.icon     || '',
     });
   }
   return cards;
@@ -152,7 +155,7 @@ function setupSheets() {
   cs.clearContents();
   cs.clearFormats();
 
-  const cHeaders = ['id', 'group', 'url', 'title', 'tag', 'desc', 'size', 'color', 'thumbUrl', 'faded', 'newTab', 'locked', 'lockKey'];
+  const cHeaders = ['id', 'group', 'url', 'title', 'tag', 'desc', 'size', 'color', 'thumbUrl', 'faded', 'newTab', 'locked', 'icon'];
   cs.getRange(1, 1, 1, cHeaders.length)
     .setValues([cHeaders])
     .setFontWeight('bold')
