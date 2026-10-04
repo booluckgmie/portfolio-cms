@@ -210,6 +210,13 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
 .thumb-icon .plat{position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);z-index:1}
 .repo-link{color:var(--text3);font-size:15px;display:inline-flex;transition:color .15s}
 .repo-link:hover{color:var(--text)}
+/* PRIVATE CARDS */
+.card.private{border-color:rgba(255,169,77,.45);box-shadow:0 0 0 1px rgba(255,169,77,.12) inset}
+.card.private:hover{border-color:rgba(255,169,77,.8)}
+.priv-pill{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid rgba(255,169,77,.5);background:rgba(255,169,77,.14);color:#ffa94d;display:inline-flex;align-items:center;gap:4px}
+.pill.priv{border-color:rgba(255,169,77,.4);color:#ffa94d}
+.pill.priv.active{background:#ffa94d;border-color:#ffa94d;color:#0d0f14}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 /* LOCK */
 .lock-badge{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;background:rgba(13,15,20,.85);border:1px solid rgba(255,183,77,.4);display:flex;align-items:center;justify-content:center;z-index:3;backdrop-filter:blur(4px)}
 .lock-badge i{font-size:13px;color:#ffa94d}
@@ -1013,6 +1020,8 @@ function renderPills(){
   data.groups.forEach(g=>{
     fr.innerHTML+=`<button class="pill${activeFilter===g.id?' active':''}" onclick="setFilter('${g.id}')"><i class="ti ti-${g.icon}"></i> ${g.label}</button>`;
   });
+  const n = data.cards.filter(c=>c.locked).length;
+  if(n || isAdmin) fr.innerHTML+=`<button class="pill priv${activeFilter==='locked'?' active':''}" onclick="setFilter('locked')"><i class="ti ti-lock"></i> Private (${n})</button>`;
 }
 
 function renderTree(){
@@ -1044,7 +1053,8 @@ function renderCatalog(){
   data.groups.forEach(g=>{
     const cards = data.cards.filter(c=>{
       if(c.group!==g.id) return false;
-      if(activeFilter!=='all' && activeFilter!==g.id) return false;
+      if(activeFilter==='locked'){ if(!c.locked) return false; }
+      else if(activeFilter!=='all' && activeFilter!==g.id) return false;
       if(q && ![c.title,c.desc,c.tag,c.url,c.repo].join(' ').toLowerCase().includes(q)) return false;
       return true;
     });
@@ -1088,14 +1098,14 @@ function buildCard(c, g){
     : '';
   const repo = /^https:\/\/github\.com\//.test(c.repo||'')
     ? `<a class="repo-link" href="${h(c.repo)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Source on GitHub"><i class="ti ti-brand-github"></i></a>` : '';
-  return `<div class="card${c.faded?' faded':''}" onclick="goCard(event,'${h(c.id)}')">
+  return `<div class="card${c.faded?' faded':''}${c.locked?' private':''}" onclick="goCard(event,'${h(c.id)}')">
     <div class="thumb" style="background:${hex2dark(col)}">
       ${iconTile(c,g,col)}${thumb}
       <div class="thumb-overlay"></div>
       ${c.locked?`<div class="lock-badge" title="Private — password required"><i class="ti ti-lock"></i></div>`:''}
     </div>
     <div class="card-body">
-      <span class="card-tag" style="color:${col};border-color:${col}28;background:${col}10">${h(c.tag||'')}</span>
+      <div class="card-tags"><span class="card-tag" style="color:${col};border-color:${col}28;background:${col}10">${h(c.tag||'')}</span>${c.locked?'<span class="priv-pill"><i class="ti ti-lock"></i> Private</span>':''}</div>
       <div class="card-title">${h(c.title)}</div>
       <div class="card-desc">${h(c.desc||'')}</div>
     </div>
@@ -1103,7 +1113,8 @@ function buildCard(c, g){
       <span class="card-fn">${h(hostLabel(c))}${c.size?' · '+h(c.size):''}</span>
       <div class="card-actions">
         ${repo}
-        ${isAdmin?`<button class="btn sm" onclick="event.stopPropagation();openEditCard('${h(c.id)}')" title="Edit"><i class="ti ti-edit"></i></button>
+        ${isAdmin?`<button class="btn sm${c.locked?' warn':''}" onclick="event.stopPropagation();toggleLock('${h(c.id)}')" title="${c.locked?'Private — click to make public':'Public — click to make private'}"><i class="ti ti-${c.locked?'lock':'lock-open'}"></i></button>
+        <button class="btn sm" onclick="event.stopPropagation();openEditCard('${h(c.id)}')" title="Edit"><i class="ti ti-edit"></i></button>
         <button class="btn sm danger" onclick="event.stopPropagation();doDeleteCard('${h(c.id)}')" title="Remove"><i class="ti ti-trash"></i></button>`:''}
         <i class="ti ti-${c.locked?'lock':(c.newTab?'external-link':'arrow-right')} card-arr"></i>
       </div>
@@ -1124,6 +1135,13 @@ function goCard(e, id){
 }
 
 function setFilter(f){ activeFilter = f; render(); }
+function toggleLock(id){
+  const c = data.cards.find(x=>x.id===id); if(!c) return;
+  if(c.locked && !c.url){ showToast('This card\'s link is hidden. Edit it and enter the URL before making it public.','err'); return; }
+  c.locked = !c.locked;
+  persist(); render();
+  showToast(c.locked ? 'Marked private — Publish to save.' : 'Made public — Publish to save.','ok');
+}
 function renderFooterCount(){
   const t=data.cards.length, g=data.groups.length;
   document.getElementById('footerCount').textContent=`${t} file${t!==1?'s':''} · ${g} group${g!==1?'s':''}`;
