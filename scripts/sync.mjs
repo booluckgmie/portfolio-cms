@@ -150,6 +150,7 @@ function place(item) {
 [...(results.netlify || []), ...(results.vercel || []), ...(results.github || [])].forEach(place);
 
 const ignore = new Set((cfg.ignore || []).map(s => s.toLowerCase()));
+const ignorePatterns = (cfg.ignorePatterns || []).map(r => new RegExp(r, 'i'));
 const rules = (cfg.rules || []).map(r => ({ ...r, re: new RegExp(r.match, 'i') }));
 
 function toCandidate(p) {
@@ -160,6 +161,7 @@ function toCandidate(p) {
   const primary = deployed.find(i => i.platform !== 'github') || deployed[0];
   const custom  = deployed.find(i => !/\.(netlify\.app|vercel\.app|github\.io)/.test(i.url));
   const name = gh?.name || primary.name;
+  if (ignorePatterns.some(re => re.test(name))) return null;
   if (ignore.has(name.toLowerCase()) || p.items.some(i => ignore.has(i.name.toLowerCase()))) return null;
   const platforms = [...new Set(deployed.map(i => i.platform))];
   const hints = p.items.flatMap(i => i.hints || []).join(' ') + ' ' + name;
