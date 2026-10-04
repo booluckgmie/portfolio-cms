@@ -27,5 +27,8 @@
       "match": "-private$",
       "locked": true
     }
+  ],
+  "ignorePatterns": [
+    "^[a-z]+-[a-z]+-[0-9a-f]{6}$"
   ]
 }
