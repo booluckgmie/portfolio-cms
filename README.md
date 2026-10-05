@@ -36,6 +36,7 @@ Only `dist/` is published (built by `node scripts/build.mjs`), so `content/`, `s
 | Variable | Meaning |
 |---|---|
 | `ACCESS_KEY` | **The password** for every protected card. Use a long passphrase. |
+| `ADMIN_KEY` | **Admin login password**, checked on the server, so it works on every browser/device. If unset, the login falls back to the per-browser key (default `admin123`). |
 | `ACCESS_KEYS` | *optional* JSON of per-card passwords, e.g. `{"p_my-secret-app":"another passphrase"}` |
 
 Then edit `content/sync.config.json` (GitHub username, ignore list, auto-group rules).
@@ -58,5 +59,5 @@ Icons are [Tabler icon](https://tabler.io/icons) names (`rocket`, `brand-react`,
 * Protected cards: the real link is **not** in the public `data/catalog.json`. The browser asks `/api/unlock`, which checks the password server-side and only then returns the link. Wrong guesses are delayed ~0.7s.
 * This hides the *link*; it does not protect the destination. Anyone who learns the URL can open it. For sensitive projects also enable **Netlify password protection / Vercel Deployment Protection** on that site itself.
 * `content/catalog.json` contains the real URLs of locked projects. If this GitHub repo is **public**, those URLs are public too — keep the repo private if that matters. Only `dist/` is published, so it isn't served by the site.
-* The admin key in the browser (`admin123` by default) only unlocks the edit UI; publishing still needs your GitHub token. **Change it** (Admin → Change admin key).
+* Admin login: set `ADMIN_KEY` in your host's env vars. Without it the page falls back to a per-browser key (`admin123` by default). Either way it only unlocks the edit UI (publishing still needs your GitHub token), and a login lasts 30 days per browser until you choose *Exit admin mode*.
 * Legacy Google Sheet sync (`appscript.gs`) is optional and its URL is public — no passwords there.
