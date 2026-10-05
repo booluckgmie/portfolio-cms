@@ -907,18 +907,35 @@ function updateSheetModalStatus(){
 /* ═══════════════════════════════
    AUTH
 ═══════════════════════════════ */
-function tryLogin(){
+const ADMIN_DAYS = 30;
+function enterAdmin(announce){
+  isAdmin = true;
+  try{ localStorage.setItem('hub_admin_until', String(Date.now()+ADMIN_DAYS*864e5)); }catch{}
+  document.getElementById('authOverlay').style.display='none';
+  document.body.classList.add('admin-mode');
+  document.getElementById('adminBadge').classList.add('visible');
+  if(getSheetUrl()) document.getElementById('syncBtn').style.display='';
+  if(announce) showToast('Admin mode active.','ok');
+  updatePublishBadge();
+  initSync();
+}
+function adminSessionValid(){
+  try{ return Number(localStorage.getItem('hub_admin_until')||0) > Date.now(); }catch{ return false; }
+}
+// Server check first (ADMIN_KEY env var). If the server has none / is unreachable, use the local key.
+async function checkAdminKey(val){
+  try{
+    const res = await fetch('/api/unlock', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id:'__admin__', key: val }) });
+    if(res.ok) return true;
+    if(res.status===401) return false;
+  }catch{}
+  return val === getKey();
+}
+async function tryLogin(){
   const val = document.getElementById('authInput').value;
   const err = document.getElementById('authErr');
-  if(val === getKey()){
-    isAdmin = true;
-    document.getElementById('authOverlay').style.display='none';
-    document.body.classList.add('admin-mode');
-    document.getElementById('adminBadge').classList.add('visible');
-    if(getSheetUrl()) document.getElementById('syncBtn').style.display='';
-    showToast('Admin mode active.','ok');
-    updatePublishBadge();
-    initSync();
+  if(await checkAdminKey(val)){
+    enterAdmin(true);
   }else{
     err.textContent='Incorrect admin key.';
     const box = document.getElementById('authBox');
@@ -936,6 +953,7 @@ function loginGuest(){
 }
 function doLogout(){
   isAdmin = false;
+  try{ localStorage.removeItem('hub_admin_until'); }catch{}
   document.body.classList.remove('admin-mode');
   document.getElementById('adminBadge').classList.remove('visible');
   document.getElementById('syncBtn').style.display='none';
@@ -1581,7 +1599,8 @@ function h(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 ═══════════════════════════════ */
 document.getElementById('authOverlay').style.display='none';
 render(); // render cached data immediately so the page isn't blank
-initSync(); // then pull the fresh public catalog
+if(adminSessionValid()) enterAdmin(false); // stay logged in across refreshes
+else initSync(); // then pull the fresh public catalog
 </script>
 </body>
 </html>
