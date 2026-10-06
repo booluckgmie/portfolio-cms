@@ -1113,7 +1113,7 @@
     },
     {
       "id": "p_shutdown-radar",
-      "url": "https://shutdown-radar.vercel.app",
+      "url": "https://shutdown-radar-gamma.vercel.app",
       "title": "Shutdown Radar",
       "tag": "Vercel",
       "desc": "Shutdown Radar web app.",
@@ -1127,7 +1127,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-06T02:49:26.563Z",
+      "updated": "2026-10-06T16:40:58.348Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1254,7 +1254,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-05T06:38:47.797Z",
+      "updated": "2026-10-06T07:16:37.750Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1355,7 +1355,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-05T16:17:05.553Z",
+      "updated": "2026-10-06T09:44:47.666Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1381,7 +1381,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-06T05:39:15.550Z",
+      "updated": "2026-10-06T17:31:53.324Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1733,7 +1733,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-06T01:05:32.681Z",
+      "updated": "2026-10-06T09:58:42.619Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1744,5 +1744,5 @@
       ]
     }
   ],
-  "_synced": "2026-10-06T06:26:31.015Z"
+  "_synced": "2026-10-06T18:25:30.299Z"
 }
