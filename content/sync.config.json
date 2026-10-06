@@ -30,5 +30,16 @@
   ],
   "ignorePatterns": [
     "^[a-z]+-[a-z]+-[0-9a-f]{6}$"
+  ],
+  "ignoreHosts": [
+    "jagamrt.netlify.app",
+    "sekweb.netlify.app",
+    "mkgdev-project.netlify.app",
+    "opendat10.netlify.app",
+    "adb-viz2020.netlify.app",
+    "untouch-nes.netlify.app",
+    "singular-maamoul-dc904a.netlify.app",
+    "pksof.netlify.app",
+    "animated-truffle-46aa7c.netlify.app"
   ]
 }

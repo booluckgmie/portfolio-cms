@@ -147,7 +147,10 @@ function place(item) {
   if (item.url) byHost.set(hostOf(item.url), p);
 }
 // deployed platforms first so GitHub repos only attach / add Pages & homepage projects
-[...(results.netlify || []), ...(results.vercel || []), ...(results.github || [])].forEach(place);
+const deadHosts = new Set((cfg.ignoreHosts || []).map(s => s.toLowerCase()));
+// A listed host is a dead/unwanted deployment: drop just that deployment, keep the project's others.
+const keep = i => !(i.url && deadHosts.has(hostOf(i.url)));
+[...(results.netlify || []), ...(results.vercel || []), ...(results.github || [])].filter(keep).forEach(place);
 
 const ignore = new Set((cfg.ignore || []).map(s => s.toLowerCase()));
 const ignorePatterns = (cfg.ignorePatterns || []).map(r => new RegExp(r, 'i'));
