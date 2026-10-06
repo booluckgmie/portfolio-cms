@@ -352,28 +352,6 @@
       ]
     },
     {
-      "id": "nl_959c5065-7dd",
-      "group": "gov",
-      "url": "https://jagamrt.netlify.app",
-      "title": "Jaga MRT",
-      "tag": "Gov",
-      "desc": "Geofenced commuter-train alarm with live disruption status.",
-      "size": "",
-      "color": "#4c9be8",
-      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/69a6ea929e5a0d00075570e0/screenshot_2026-03-03-14-06-13-0000.webp",
-      "faded": false,
-      "newTab": true,
-      "locked": false,
-      "repo": "https://github.com/myketapang/jagamrt",
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2026-05-31T04:37:21.720Z",
-      "sourceKeys": [
-        "netlify:959c5065-7ddc-4257-81be-ad4c7bf1481a"
-      ]
-    },
-    {
       "id": "nl_7c1d7ff5-c2b",
       "group": "gov",
       "url": "https://taxtracker-my.netlify.app",
@@ -573,27 +551,6 @@
       ]
     },
     {
-      "id": "nl_de8441db-0f2",
-      "group": "corp",
-      "url": "https://sekweb.netlify.app",
-      "title": "Sek Web",
-      "tag": "Corporate",
-      "desc": "Sek Web project site.",
-      "size": "",
-      "color": "#4f7cff",
-      "thumbUrl": "",
-      "faded": false,
-      "newTab": true,
-      "locked": false,
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2026-08-27T15:06:55.318Z",
-      "sourceKeys": [
-        "netlify:de8441db-0f20-4037-905f-0a433740f8b6"
-      ]
-    },
-    {
       "id": "nl_2a7984ed-a72",
       "group": "comm",
       "url": "https://whats4suite.netlify.app",
@@ -659,27 +616,6 @@
       "sourceKeys": [
         "netlify:43245acc-1570-4135-b3c6-b04bb67debf1",
         "github:secure-fileload"
-      ]
-    },
-    {
-      "id": "nl_12df4869-e8a",
-      "group": "dev",
-      "url": "https://mkgdev-project.netlify.app",
-      "title": "MKG Dev Project",
-      "tag": "Dev",
-      "desc": "MKG development project site.",
-      "size": "",
-      "color": "#4dd0e1",
-      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/688c357ddadfdfbd84aaa792/screenshot_2025-08-01-03-33-20-0000.webp",
-      "faded": false,
-      "newTab": true,
-      "locked": false,
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2025-08-01T03:33:20.242Z",
-      "sourceKeys": [
-        "netlify:12df4869-e8a8-4720-a417-38504cb2c376"
       ]
     },
     {
@@ -900,28 +836,6 @@
       ]
     },
     {
-      "id": "nl_c38e36fe-925",
-      "group": "gov",
-      "url": "https://opendat10.netlify.app",
-      "title": "OpenDat 1.0",
-      "tag": "Gov",
-      "desc": "Open Data Catalog — a browsable catalogue of open datasets.",
-      "size": "",
-      "color": "#4c9be8",
-      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/617ac4e18e84ad081d9dbfc2/screenshot_2021-10-28-15-42-42-0000.png",
-      "faded": false,
-      "newTab": true,
-      "locked": false,
-      "repo": "https://github.com/booluckgmie/Open-Data-Catalog",
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2021-10-28T15:42:41.868Z",
-      "sourceKeys": [
-        "netlify:c38e36fe-925e-4744-acf1-d553b830e402"
-      ]
-    },
-    {
       "id": "nl_a46e3a3d-2c2",
       "group": "gov",
       "url": "https://searchableds10.netlify.app",
@@ -1025,27 +939,6 @@
       "updated": "2020-12-08T09:31:50.380Z",
       "sourceKeys": [
         "netlify:1a11a95a-5995-4589-b173-5ece58940c26"
-      ]
-    },
-    {
-      "id": "nl_ca9d4b6d-84a",
-      "group": "gov",
-      "url": "https://adb-viz2020.netlify.app",
-      "title": "ADB Viz 2020",
-      "tag": "Gov",
-      "desc": "ADB data visualisation project (2020).",
-      "size": "",
-      "color": "#4c9be8",
-      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/60063a82a9166e446d632936/screenshot.png",
-      "faded": false,
-      "newTab": true,
-      "locked": false,
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2021-01-19T01:48:54.967Z",
-      "sourceKeys": [
-        "netlify:ca9d4b6d-84a5-48d5-802e-f3d08b93143e"
       ]
     },
     {
@@ -1220,9 +1113,9 @@
     },
     {
       "id": "p_shutdown-radar",
-      "url": "https://singular-maamoul-dc904a.netlify.app",
+      "url": "https://shutdown-radar.vercel.app",
       "title": "Shutdown Radar",
-      "tag": "Netlify",
+      "tag": "Vercel",
       "desc": "Shutdown Radar web app.",
       "group": "dev",
       "icon": "brand-python",
@@ -1231,7 +1124,6 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/shutdown-radar",
       "platforms": [
-        "netlify",
         "vercel",
         "github"
       ],
@@ -1241,16 +1133,15 @@
       "size": "",
       "auto": true,
       "sourceKeys": [
-        "netlify:7d96ed40-364d-472e-a16f-b19f140550c3",
         "vercel:prj_hLiACkN0ODFWZhOzGdc9FArASKVR",
         "github:shutdown-radar"
       ]
     },
     {
       "id": "p_pksof",
-      "url": "https://pksof.netlify.app",
+      "url": "https://pksof.vercel.app",
       "title": "Pksof",
-      "tag": "Netlify",
+      "tag": "Vercel",
       "desc": "Pksof web app.",
       "group": "dev",
       "icon": "brand-typescript",
@@ -1259,7 +1150,6 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/pksof",
       "platforms": [
-        "netlify",
         "vercel",
         "github"
       ],
@@ -1269,7 +1159,6 @@
       "size": "",
       "auto": true,
       "sourceKeys": [
-        "netlify:54db21b2-5f68-42bc-879f-43160b792418",
         "vercel:prj_q7hmLjPS1OVYDlzwtz07W9yQWhL8",
         "github:pksof"
       ]
@@ -1350,34 +1239,10 @@
       ]
     },
     {
-      "id": "p_untouch-nes",
-      "url": "https://untouch-nes.netlify.app",
-      "title": "Untouch Nes",
-      "tag": "Netlify",
-      "desc": "Untouch NES web app.",
-      "group": "dev",
-      "icon": "",
-      "color": "#4dd0e1",
-      "locked": false,
-      "faded": false,
-      "repo": "https://github.com/booluckgmie/untouch-nes",
-      "platforms": [
-        "netlify"
-      ],
-      "updated": "2026-07-20T06:03:18.156Z",
-      "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a5dba0d64b6c40008d1b5d6/screenshot_2026-07-20-06-03-20-0000.webp",
-      "newTab": true,
-      "size": "",
-      "auto": true,
-      "sourceKeys": [
-        "netlify:bd44313a-1358-4c44-8ae2-86f9c36bfa1c"
-      ]
-    },
-    {
       "id": "p_myopentender",
-      "url": "https://animated-truffle-46aa7c.netlify.app",
+      "url": "https://myopentender.vercel.app",
       "title": "Myopentender",
-      "tag": "Netlify",
+      "tag": "Vercel",
       "desc": "Myopentender web app.",
       "group": "dev",
       "icon": "brand-javascript",
@@ -1386,7 +1251,6 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/myopentender",
       "platforms": [
-        "netlify",
         "vercel",
         "github"
       ],
@@ -1396,7 +1260,6 @@
       "size": "",
       "auto": true,
       "sourceKeys": [
-        "netlify:a7765838-c19b-40fe-add5-b841133dc9b5",
         "vercel:prj_UzM5ghKFOGIHVuZcThf36rvpzH4e",
         "github:myopentender"
       ]
