@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-10-04T19:02:34.042Z",
+      "updated": "2026-10-05T22:19:27.097Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1235,7 +1235,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-05T06:43:51.357Z",
+      "updated": "2026-10-05T22:26:23.948Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1492,7 +1492,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-05T07:24:02.347Z",
+      "updated": "2026-10-05T16:17:05.553Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1504,7 +1504,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy.vercel.app",
+      "url": "https://bursamy-my-ketapang.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Live on Vercel & GitHub · updated 2026-10-04.",
@@ -1518,7 +1518,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-05T13:12:52.020Z",
+      "updated": "2026-10-05T23:27:54.943Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1853,7 +1853,33 @@
         "netlify:3f572512-baca-4409-ac1d-5e4259cdb78c",
         "github:studio"
       ]
+    },
+    {
+      "id": "p_tanya-data",
+      "url": "https://tanya-data-eight.vercel.app",
+      "title": "Tanya Data",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-05.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/tanya-data",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-10-05T23:17:55.720Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_wElyPsdh8sjJPvQMVhSwvcJX9kKw",
+        "github:tanya-data"
+      ]
     }
   ],
-  "_synced": "2026-10-05T14:47:45.735Z"
+  "_synced": "2026-10-06T00:06:08.743Z"
 }
