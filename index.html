@@ -412,6 +412,9 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <button class="btn" onclick="closeModal('adminModal');openSheetModal()" style="width:100%;justify-content:flex-start">
         <i class="ti ti-table-options"></i> Google Sheet connection
       </button>
+      <button class="btn" onclick="closeModal('adminModal');discardLocal()" style="width:100%;justify-content:flex-start">
+        <i class="ti ti-arrow-back-up"></i> Discard unpublished changes
+      </button>
       <div style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px">
         <button class="btn danger" onclick="closeModal('adminModal');confirmReset()" style="width:100%;justify-content:flex-start">
           <i class="ti ti-refresh-alert"></i> Reset catalog to defaults
@@ -459,10 +462,10 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       </div>
       <div class="field-row">
         <div class="field"><label>GitHub Owner *</label><input type="text" id="gh_owner" placeholder="booluckgmie"></div>
-        <div class="field"><label>Repository *</label><input type="text" id="gh_repo" placeholder="project-hub"></div>
+        <div class="field"><label>Repository *</label><input type="text" id="gh_repo" placeholder="portfolio-cms"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Branch</label><input type="text" id="gh_branch" placeholder="master"></div>
+        <div class="field"><label>Branch <span style="color:var(--text3);font-weight:400">(blank = repo default)</span></label><input type="text" id="gh_branch" placeholder="main"></div>
         <div class="field"><label>File path in repo *</label><input type="text" id="gh_path" placeholder="content/catalog.json"></div>
       </div>
       <div class="field">
@@ -663,7 +666,7 @@ let selColor = COLORS[0];
 let selGrpColor = COLORS[0];
 let thumbDebounce = null;
 let currentThumbUrl = '';
-let hasUnpublished = false;
+let hasUnpublished = (()=>{ try{ return localStorage.getItem('hub_unpublished')==='1'; }catch{ return false; } })();
 
 /* ─── LOCAL STORAGE ─── */
 function loadLocal(){
@@ -691,6 +694,7 @@ function setGHConfig(cfg){ localStorage.setItem('hub_gh_config', JSON.stringify(
 
 /* ─── LOAD CATALOG FROM SERVER ─── */
 async function loadCatalogFromServer(){
+  if(hasUnpublished) return false;   // never overwrite edits that are not published yet
   try{
     const res = await fetch(`/data/catalog.json?t=${Date.now()}`);
     if(!res.ok) throw new Error('HTTP ' + res.status);
@@ -715,7 +719,6 @@ async function loadCatalogFromServer(){
       data = d;
       localStorage.setItem('hub_catalog', JSON.stringify(data));
       localStorage.removeItem('hub_last_publish');
-      hasUnpublished = false;
       updatePublishBadge();
       return true;
     }
@@ -728,6 +731,7 @@ async function loadCatalogFromServer(){
 /* ─── PUBLISH TO GITHUB ─── */
 function markUnpublished(show){
   hasUnpublished = show;
+  try{ show ? localStorage.setItem('hub_unpublished','1') : localStorage.removeItem('hub_unpublished'); }catch{}
   updatePublishBadge();
 }
 function updatePublishBadge(){
@@ -739,7 +743,7 @@ function openGHSettings(){
   const cfg = getGHConfig();
   document.getElementById('gh_owner').value = cfg.owner || '';
   document.getElementById('gh_repo').value = cfg.repo || '';
-  document.getElementById('gh_branch').value = cfg.branch || 'master';
+  document.getElementById('gh_branch').value = (cfg.branch==='master' ? '' : cfg.branch) || '';
   document.getElementById('gh_path').value = cfg.path || 'content/catalog.json';
   document.getElementById('gh_token').value = cfg.token || '';
   openModal('ghModal');
@@ -748,7 +752,7 @@ function saveGHSettings(){
   const cfg = {
     owner: document.getElementById('gh_owner').value.trim(),
     repo:  document.getElementById('gh_repo').value.trim(),
-    branch:document.getElementById('gh_branch').value.trim() || 'master',
+    branch:document.getElementById('gh_branch').value.trim(),
     path:  document.getElementById('gh_path').value.trim() || 'content/catalog.json',
     token: document.getElementById('gh_token').value.trim(),
   };
@@ -756,6 +760,19 @@ function saveGHSettings(){
   setGHConfig(cfg);
   closeModal('ghModal');
   publishToGitHub();
+}
+
+function ghHint(status, msg){
+  if(status===401) return 'The token is invalid or expired. Create a new one in Admin → GitHub publish settings.';
+  if(status===403) return 'The token is not allowed to write. It needs Contents: Read and write on this repository.';
+  if(status===404) return 'GitHub cannot find the repo, branch or file — check owner, repository and branch, and that the token has access to this repo.';
+  if(status===409||status===422) return 'The file changed on GitHub (or the branch name is wrong). Try Publish again.';
+  return '';
+}
+async function ghFail(res){
+  let msg=''; try{ msg=(await res.json()).message||''; }catch{}
+  const e = new Error(`GitHub ${res.status}${msg?': '+msg:''}. ${ghHint(res.status,msg)}`.trim());
+  e.status = res.status; return e;
 }
 
 async function publishToGitHub(){
@@ -767,48 +784,57 @@ async function publishToGitHub(){
   btn.innerHTML = '<i class="ti ti-loader" style="animation:spin .8s linear infinite"></i> Publishing…';
 
   try{
-    const branch = cfg.branch || 'master';
     const filePath = cfg.path || 'content/catalog.json';
-    const apiBase = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${filePath}`;
-    const headers = { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github.v3+json' };
+    const repoApi = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+    const apiBase = `${repoApi}/contents/${filePath}`;
+    const headers = { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github+json' };
 
-    // Get current SHA (needed for update)
-    let sha;
-    const getRes = await fetch(`${apiBase}?ref=${branch}`, { headers });
-    let existing = {};
-    if(getRes.ok){
-      const f = await getRes.json(); sha = f.sha;
-      try{ existing = JSON.parse(decodeURIComponent(escape(atob(f.content.replace(/\n/g,''))))); }catch{}
+    // Branch: use the repo's real default unless one was set explicitly ("master" was an old default).
+    const repoRes = await fetch(repoApi, { headers });
+    if(!repoRes.ok) throw await ghFail(repoRes);
+    const def = (await repoRes.json()).default_branch;
+    const branch = (!cfg.branch || (cfg.branch==='master' && def!=='master')) ? def : cfg.branch;
+
+    for(let attempt=0; attempt<2; attempt++){
+      // Current file: needed for its sha AND to restore hidden links of protected cards.
+      const getRes = await fetch(`${apiBase}?ref=${encodeURIComponent(branch)}`, { headers });
+      if(!getRes.ok) throw await ghFail(getRes);   // never publish blind — it could wipe protected links
+      const f = await getRes.json();
+      let existing = {};
+      try{ existing = JSON.parse(decodeURIComponent(escape(atob(f.content.replace(/\n/g,''))))); }
+      catch{ throw new Error('Could not read the current catalog from GitHub, so nothing was changed.'); }
+
+      const oldCards = Object.fromEntries((existing.cards||[]).map(c=>[c.id,c]));
+      const outCards = data.cards.map(c=>{
+        const o = oldCards[c.id] || {};
+        return {
+          ...(o.auto!==undefined?{auto:o.auto}:{}), ...(o.sourceKeys?{sourceKeys:o.sourceKeys}:{}), ...(o.gone?{gone:o.gone}:{}),
+          ...c, url: c.url || (c.locked ? o.url : '') || '',
+        };
+      });
+      const missing = outCards.filter(c=>c.locked && !c.url);
+      if(missing.length) throw new Error('Protected card has no link: '+missing.map(c=>c.title).join(', ')+'. Edit it and enter the URL.');
+
+      const content = JSON.stringify({...data, cards: outCards, _synced: new Date().toISOString()}, null, 2);
+      const putRes = await fetch(apiBase, {
+        method:'PUT', headers:{ ...headers, 'Content-Type':'application/json' },
+        body: JSON.stringify({ message:'📦 Update catalog via Project Hub admin', content: btoa(unescape(encodeURIComponent(content))), branch, sha: f.sha })
+      });
+      if(putRes.ok) break;
+      if(putRes.status===409 && attempt===0) continue;   // the sync bot committed meanwhile — retry once on the fresh file
+      throw await ghFail(putRes);
     }
-    // The public page hides protected links; restore them from the source file so they aren't wiped.
-    const oldCards = Object.fromEntries((existing.cards||[]).map(c=>[c.id,c]));
-    const outCards = data.cards.map(c=>{
-      const o = oldCards[c.id] || {};
-      return {
-        ...(o.auto!==undefined?{auto:o.auto}:{}), ...(o.sourceKeys?{sourceKeys:o.sourceKeys}:{}), ...(o.gone?{gone:o.gone}:{}),
-        ...c, url: c.url || (c.locked ? o.url : '') || '',
-      };
-    });
-    const content = JSON.stringify({...data, cards: outCards, _synced: new Date().toISOString()}, null, 2);
-    const encoded = btoa(unescape(encodeURIComponent(content)));
-    const body = { message:'📦 Update catalog via Project Hub admin', content: encoded, branch };
-    if(sha) body.sha = sha;
-
-    const putRes = await fetch(apiBase, {
-      method:'PUT', headers:{ ...headers, 'Content-Type':'application/json' },
-      body: JSON.stringify(body)
-    });
-    if(!putRes.ok) throw new Error((await putRes.json()).message || 'GitHub API error');
 
     const syncedAt = new Date().toISOString();
     data._synced = syncedAt;
     localStorage.setItem('hub_catalog', JSON.stringify(data));
     localStorage.setItem('hub_last_publish', syncedAt);
     markUnpublished(false);
-    showToast('Published to GitHub! Netlify rebuilds in ~30s.','ok');
+    showToast('Published to GitHub ('+branch+')! The live site updates in about a minute — refresh then.','ok',7000);
 
   }catch(e){
-    showToast('Publish failed: ' + e.message, 'err');
+    showToast('Publish failed — '+e.message, 'err', 14000);
+    console.error('[Hub] publish failed', e);
   }finally{
     btn.disabled = false;
     btn.innerHTML = '<i class="ti ti-cloud-upload"></i> Publish';
@@ -1533,6 +1559,11 @@ function importNetlifySites(){
 /* ═══════════════════════════════
    EXPORT / IMPORT / RESET
 ═══════════════════════════════ */
+function discardLocal(){
+  if(!confirm('Throw away changes you have not published and reload the live catalog?')) return;
+  ['hub_catalog','hub_last_publish','hub_unpublished'].forEach(k=>localStorage.removeItem(k));
+  location.reload();
+}
 function exportJSON(){
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='catalog.json'; a.click();
@@ -1575,13 +1606,13 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySele
 document.getElementById('searchInput').addEventListener('input',()=>render());
 
 let _toastTimer=null;
-function showToast(msg, type='ok'){
+function showToast(msg, type='ok', ms=2800){
   const t=document.getElementById('toast');
   const icons={ok:'circle-check',err:'alert-circle',info:'info-circle'};
   t.className='toast show '+type;
-  t.innerHTML=`<i class="ti ti-${icons[type]||'info-circle'}"></i>${msg}`;
+  t.innerHTML=`<i class="ti ti-${icons[type]||'info-circle'}"></i>${h(msg)}`;
   clearTimeout(_toastTimer);
-  _toastTimer=setTimeout(()=>t.classList.remove('show'), 2800);
+  _toastTimer=setTimeout(()=>t.classList.remove('show'), ms);
 }
 
 /* ═══════════════════════════════
