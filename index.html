@@ -210,6 +210,12 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
 .thumb-icon .plat{position:absolute;left:12px;bottom:10px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);z-index:1}
 .repo-link{color:var(--text3);font-size:15px;display:inline-flex;transition:color .15s}
 .repo-link:hover{color:var(--text)}
+/* FEATURED */
+.section-group.featured .g-label{color:#ffd43b}
+.section-group.featured .cards-grid{grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
+.section-group.featured .card{border-color:rgba(255,212,59,.28)}
+.section-group.featured .card:hover{border-color:rgba(255,212,59,.7)}
+.feat-pill{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid rgba(255,212,59,.45);background:rgba(255,212,59,.12);color:#ffd43b;display:inline-flex;align-items:center;gap:4px}
 /* PRIVATE CARDS */
 .card.private{border-color:rgba(255,169,77,.45);box-shadow:0 0 0 1px rgba(255,169,77,.12) inset}
 .card.private:hover{border-color:rgba(255,169,77,.8)}
@@ -353,6 +359,7 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
       <div class="field"><label>Accent colour</label><div class="swatches" id="colorSwatches"></div></div>
       <label class="check-row"><input type="checkbox" id="f_faded"> Archive / faded</label>
       <label class="check-row"><input type="checkbox" id="f_newtab"> Open in new tab</label>
+      <label class="check-row"><input type="checkbox" id="f_featured"> Featured — show in the top row</label>
       <div style="border-top:1px solid var(--border);padding-top:10px;margin-top:4px">
         <label class="check-row"><input type="checkbox" id="f_locked"> Protected — password required to open</label>
         <span class="field-hint" style="display:block;margin-top:6px">The link is removed from the public site and only released by the server after the right password. Passwords live in Netlify env vars (<code>ACCESS_KEY</code>, optional per-card <code>ACCESS_KEYS</code>) — see README.</span>
@@ -1094,6 +1101,17 @@ function renderCatalog(){
   const root = document.getElementById('catalogRoot');
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   let html='', total=0;
+  const feat = data.cards.filter(c=>c.featured).sort((a,b)=>(a.featuredOrder||99)-(b.featuredOrder||99));
+  if(feat.length && activeFilter==='all' && !q){
+    html+=`<div class="section-group featured" data-group="featured">
+      <div class="group-header">
+        <span class="g-label"><i class="ti ti-star-filled"></i>Featured</span>
+        <div class="g-line"></div>
+        <span class="g-count">${feat.length}</span>
+      </div>
+      <div class="cards-grid">${feat.map(c=>buildCard(c,getGrp(c.group))).join('')}</div>
+    </div>`;
+  }
   data.groups.forEach(g=>{
     const cards = data.cards.filter(c=>{
       if(c.group!==g.id) return false;
@@ -1253,6 +1271,7 @@ function openAddCard(preGrp){
   ['f_url','f_title','f_tag','f_desc','f_size','f_thumb','f_icon'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('f_faded').checked=false;
   document.getElementById('f_newtab').checked=false;
+  document.getElementById('f_featured').checked=false;
   document.getElementById('f_locked').checked=false;
   document.getElementById('f_icon').value='';
   selColor=COLORS[0]; currentThumbUrl='';
@@ -1274,6 +1293,7 @@ function openEditCard(id){
   document.getElementById('f_thumb').value=c.thumbUrl||'';
   document.getElementById('f_faded').checked=!!c.faded;
   document.getElementById('f_newtab').checked=!!c.newTab;
+  document.getElementById('f_featured').checked=!!c.featured;
   document.getElementById('f_locked').checked=!!c.locked;
   document.getElementById('f_icon').value=c.icon||'';
   document.getElementById('f_url').placeholder=c.locked&&!c.url?'(hidden — leave blank to keep)':'https://… or relative.html';
@@ -1293,7 +1313,7 @@ function saveCard(){
     url, title, tag:document.getElementById('f_tag').value.trim(),
     desc:document.getElementById('f_desc').value.trim(), size:document.getElementById('f_size').value.trim(),
     color:selColor, thumbUrl:currentThumbUrl||'',
-    faded:document.getElementById('f_faded').checked, newTab:document.getElementById('f_newtab').checked,
+    faded:document.getElementById('f_faded').checked, newTab:document.getElementById('f_newtab').checked, featured:document.getElementById('f_featured').checked,
     locked, icon:document.getElementById('f_icon').value.trim(),
   };
   if(editCardId){ const i=data.cards.findIndex(c=>c.id===editCardId); if(i>=0) data.cards[i]={...data.cards[i],...card}; }
