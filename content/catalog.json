@@ -1114,11 +1114,11 @@
     {
       "id": "p_shutdown-radar",
       "url": "https://shutdown-radar-gamma.vercel.app",
-      "title": "Shutdown Radar",
+      "title": "Disruption Tracker (Shutdown Radar)",
       "tag": "Vercel",
-      "desc": "Shutdown Radar web app.",
+      "desc": "Correlates internet outages with natural disasters, armed conflict and government shutdowns, with confidence ratings and a visible data pipeline.",
       "group": "dev",
-      "icon": "brand-python",
+      "icon": "radar",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
@@ -1135,7 +1135,9 @@
       "sourceKeys": [
         "vercel:prj_hLiACkN0ODFWZhOzGdc9FArASKVR",
         "github:shutdown-radar"
-      ]
+      ],
+      "featured": true,
+      "featuredOrder": 1
     },
     {
       "id": "p_pksof",
@@ -1241,11 +1243,11 @@
     {
       "id": "p_myopentender",
       "url": "https://myopentender.vercel.app",
-      "title": "Myopentender",
+      "title": "TenderTrack MY",
       "tag": "Vercel",
-      "desc": "Myopentender web app.",
+      "desc": "Malaysia tender intelligence dashboard: monitors state procurement portals with alerts, a pipeline and starred tenders.",
       "group": "dev",
-      "icon": "brand-javascript",
+      "icon": "file-search",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
@@ -1262,7 +1264,9 @@
       "sourceKeys": [
         "vercel:prj_UzM5ghKFOGIHVuZcThf36rvpzH4e",
         "github:myopentender"
-      ]
+      ],
+      "featured": true,
+      "featuredOrder": 2
     },
     {
       "id": "p_wc2026-prediction",
@@ -1342,11 +1346,11 @@
     {
       "id": "p_jagamrt",
       "url": "https://jagamrt.vercel.app",
-      "title": "Jagamrt",
+      "title": "JAGAMRT Train Alarm",
       "tag": "Vercel",
-      "desc": "Geofenced commuter-train alarm with live disruption status.",
+      "desc": "Geofenced commuter-train alarm with live disruption status, built from news and Rapid KL notices and open about its data limits.",
       "group": "dev",
-      "icon": "sparkles",
+      "icon": "train",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
@@ -1363,7 +1367,9 @@
       "sourceKeys": [
         "vercel:prj_FeACBNJIMEXUEuVzfpl1T4OkXDki",
         "github:jagamrt"
-      ]
+      ],
+      "featured": true,
+      "featuredOrder": 5
     },
     {
       "id": "p_sharecode",
@@ -1394,11 +1400,11 @@
     {
       "id": "p_blifeline",
       "url": "https://blifeline.vercel.app",
-      "title": "Blifeline",
+      "title": "BLifeline Malaysia",
       "tag": "Vercel",
-      "desc": "Blood-supply days-of-stock and ICU vulnerability by Malaysian state, with a surge simulator.",
+      "desc": "Blood-supply days-of-stock and ICU vulnerability by state from data.gov.my, with a surge simulator and methodology page.",
       "group": "dev",
-      "icon": "sparkles",
+      "icon": "heartbeat",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
@@ -1415,7 +1421,9 @@
       "sourceKeys": [
         "vercel:prj_Sz5uA2BgBbdNEsT3dAGQtoSjsHFp",
         "github:blifeline"
-      ]
+      ],
+      "featured": true,
+      "featuredOrder": 4
     },
     {
       "id": "p_eventsmap",
@@ -1722,9 +1730,9 @@
       "url": "https://tanya-data-eight.vercel.app",
       "title": "Tanya Data",
       "tag": "Vercel",
-      "desc": "Ask a question in your own words and find the official statistics that answer it.",
+      "desc": "Ask in English or Bahasa Malaysia and get the official dataset — and an honest answer when none exists. Tested on 74 questions.",
       "group": "dev",
-      "icon": "brand-python",
+      "icon": "language",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
@@ -1741,7 +1749,9 @@
       "sourceKeys": [
         "vercel:prj_wElyPsdh8sjJPvQMVhSwvcJX9kKw",
         "github:tanya-data"
-      ]
+      ],
+      "featured": true,
+      "featuredOrder": 3
     }
   ],
   "_synced": "2026-10-06T18:25:30.299Z"
