@@ -1127,7 +1127,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-08T21:55:33.078Z",
+      "updated": "2026-10-09T01:54:14.526Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1387,7 +1387,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-08T22:33:34.360Z",
+      "updated": "2026-10-09T05:23:35.499Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1752,7 +1752,33 @@
       ],
       "featured": true,
       "featuredOrder": 3
+    },
+    {
+      "id": "p_moomooiq",
+      "url": "https://moomooiq.vercel.app",
+      "title": "MoomooIQ",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-09.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/moomooIQ",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-10-09T02:45:23.693Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_J27Frlf2YO5hFgE86OqIJUtskuJo",
+        "github:moomooIQ"
+      ]
     }
   ],
-  "_synced": "2026-10-08T23:23:57.781Z"
+  "_synced": "2026-10-09T06:14:28.502Z"
 }
