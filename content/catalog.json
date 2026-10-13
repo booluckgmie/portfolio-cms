@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-10-12T22:44:36Z",
+      "updated": "2026-10-13T20:58:28Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1127,7 +1127,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-13T07:34:11.314Z",
+      "updated": "2026-10-13T21:07:25.699Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1373,7 +1373,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy.vercel.app",
+      "url": "https://bursamy-my-ketapang.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1387,7 +1387,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-13T13:36:39.683Z",
+      "updated": "2026-10-13T19:51:27.197Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1781,7 +1781,7 @@
     },
     {
       "id": "p_hazeshaman",
-      "url": "https://hazeshaman-my-ketapang.vercel.app",
+      "url": "https://hazeshaman.vercel.app",
       "title": "Hazeshaman",
       "tag": "Vercel",
       "desc": "Live on Vercel & GitHub · updated 2026-10-13.",
@@ -1795,7 +1795,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-13T13:29:45.592Z",
+      "updated": "2026-10-13T19:41:58Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1806,5 +1806,5 @@
       ]
     }
   ],
-  "_synced": "2026-10-13T14:17:21.507Z"
+  "_synced": "2026-10-13T22:49:35.271Z"
 }
