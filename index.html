@@ -226,6 +226,31 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
 /* LOCK */
 .lock-badge{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;background:rgba(13,15,20,.85);border:1px solid rgba(255,183,77,.4);display:flex;align-items:center;justify-content:center;z-index:3;backdrop-filter:blur(4px)}
 .lock-badge i{font-size:13px;color:#ffa94d}
+/* SITE USAGE */
+.usage-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.usage-title{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:600;color:var(--text)}
+.usage-title i{color:var(--accent);font-size:19px}
+.usage-sub{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.usage-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:14px}
+.usage-stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px}
+.usage-stat .num{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--text);line-height:1.2}
+.usage-stat .lbl{font-size:11.5px;color:var(--text3);margin-top:3px}
+.usage-body{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:14px}
+.usage-lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+@media(max-width:860px){.usage-body{grid-template-columns:1fr}}
+.usage-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px 18px;min-width:0}
+.usage-card h4{font-size:11px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;font-family:var(--mono)}
+.rank-row{display:flex;align-items:center;gap:9px;font-size:12.5px;padding:5px 0}
+.rank-key{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.rank-bar-wrap{flex:0 0 70px;height:5px;border-radius:99px;background:var(--bg3);overflow:hidden}
+.rank-bar{display:block;height:100%;background:var(--accent);border-radius:99px}
+.rank-val{font-family:var(--mono);font-size:11px;color:var(--text3);min-width:34px;text-align:right;flex-shrink:0}
+.usage-empty{text-align:center;padding:40px 24px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl)}
+.usage-empty i{font-size:26px;color:var(--text3);margin-bottom:10px;display:block}
+.usage-empty .ue-steps{font-family:var(--mono);font-size:11.5px;color:var(--text2);text-align:left;max-width:540px;margin:14px auto 0;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;line-height:1.8}
+.usage-empty .ue-steps b{color:var(--text)}
+.usage-loading{text-align:center;padding:30px;color:var(--text3);font-family:var(--mono);font-size:12px}
+.usage-nodata{color:var(--text3);font-size:12px}
 </style>
 </head>
 <body>
@@ -314,6 +339,15 @@ footer{max-width:1200px;margin:0 auto;padding:14px 44px 36px;display:flex;align-
   <div class="tree-panel" id="treePanel"></div>
   <div class="empty" id="emptyState"><i class="ti ti-search-off"></i>No projects found.</div>
   <div id="catalogRoot"></div>
+</div>
+
+<!-- SITE USAGE -->
+<div class="section-wrap" id="usageWrap">
+  <div class="usage-head">
+    <div class="usage-title"><i class="ti ti-chart-bar"></i> Site usage</div>
+    <span class="usage-sub" id="usageSub"></span>
+  </div>
+  <div id="usageBody"><div class="usage-loading"><i class="ti ti-loader-2"></i> Loading analytics…</div></div>
 </div>
 
 <footer>
@@ -1646,12 +1680,83 @@ function esc(s){ return (s||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;'); }
 function h(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 /* ═══════════════════════════════
+   SITE USAGE (Vercel Web Analytics)
+═══════════════════════════════ */
+async function loadUsage(){
+  const body=document.getElementById('usageBody'), sub=document.getElementById('usageSub');
+  try{
+    const res=await fetch('/api/analytics');
+    const d=await res.json();
+    if(!d||!d.connected){ renderUsageEmpty(body,sub,d&&d.reason); return; }
+    renderUsage(body,sub,d);
+  }catch{ renderUsageEmpty(body,sub,'unreachable'); }
+}
+function renderUsageEmpty(body,sub,reason){
+  const msgs={
+    no_token:'No <b>VERCEL_ANALYTICS_TOKEN</b> is set for this project yet.',
+    no_project:'No project ID is configured for the analytics endpoint.',
+    api_error:'The Vercel Analytics API returned an error.',
+    unreachable:'The analytics endpoint could not be reached (it only exists on the Vercel deployment).',
+  };
+  sub.textContent='';
+  body.innerHTML=`<div class="usage-empty">
+    <i class="ti ti-chart-bar-off"></i>
+    <div style="color:var(--text2);font-size:13px">${msgs[reason]||msgs.api_error}</div>
+    <div class="ue-steps">
+      1. Turn on <b>Web Analytics</b> for this project in the Vercel dashboard (Analytics tab → Enable).<br>
+      2. Add an environment variable <b>VERCEL_ANALYTICS_TOKEN</b> — a Vercel access token that can read this project.<br>
+      3. Redeploy.
+    </div>
+  </div>`;
+}
+function renderUsage(body,sub,d){
+  sub.textContent=`${d.since} → ${d.until} · last ${d.days}d`;
+  const rankList=rows=>{
+    if(!rows||!rows.length) return `<div class="usage-nodata">No data yet.</div>`;
+    const max=Math.max(1,...rows.map(r=>r.views));
+    return rows.slice(0,8).map(r=>`
+      <div class="rank-row">
+        <span class="rank-key" title="${h(r.key)}">${h(r.key)}</span>
+        <span class="rank-bar-wrap"><span class="rank-bar" style="width:${Math.round(r.views/max*100)}%"></span></span>
+        <span class="rank-val">${r.views.toLocaleString()}</span>
+      </div>`).join('');
+  };
+  body.innerHTML=`
+    <div class="usage-stats">
+      <div class="usage-stat"><div class="num">${(d.totals.views||0).toLocaleString()}</div><div class="lbl">Page views (last ${d.days}d)</div></div>
+      <div class="usage-stat"><div class="num">${(d.totals.visitors||0).toLocaleString()}</div><div class="lbl">Visitors (last ${d.days}d)</div></div>
+    </div>
+    <div class="usage-body">
+      <div class="usage-card"><h4>Daily views</h4>${buildUsageChart(d.daily)}</div>
+      <div class="usage-card"><h4>Top pages</h4>${rankList(d.pages)}</div>
+    </div>
+    <div class="usage-lists">
+      <div class="usage-card"><h4>Countries</h4>${rankList(d.countries)}</div>
+      <div class="usage-card"><h4>Devices</h4>${rankList(d.devices)}</div>
+      <div class="usage-card"><h4>Referrers</h4>${rankList(d.referrers)}</div>
+    </div>`;
+}
+function buildUsageChart(daily){
+  if(!daily||!daily.length) return `<div class="usage-nodata">No data yet.</div>`;
+  const W=600,H=110,pad=3,max=Math.max(1,...daily.map(r=>r.views)),bw=(W-pad*2)/daily.length;
+  const bars=daily.map((r,i)=>{
+    const bh=Math.max(2,Math.round((r.views/max)*(H-pad*2)));
+    const x=pad+i*bw, y=H-pad-bh;
+    return `<rect x="${x.toFixed(1)}" y="${y}" width="${Math.max(1,bw-2).toFixed(1)}" height="${bh}" rx="2" style="fill:var(--accent);opacity:${(0.5+0.5*(r.views/max)).toFixed(2)}"><title>${h(r.key)}: ${r.views} views</title></rect>`;
+  }).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:110px;display:block">${bars}</svg>`;
+}
+
+/* ═══════════════════════════════
    BOOT
 ═══════════════════════════════ */
 document.getElementById('authOverlay').style.display='none';
 render(); // render cached data immediately so the page isn't blank
 if(adminSessionValid()) enterAdmin(false); // stay logged in across refreshes
 else initSync(); // then pull the fresh public catalog
+loadUsage();
 </script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
