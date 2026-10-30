@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T05:10:59.025Z",
+      "updated": "2026-10-30T12:31:00.319Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-29T06:54:29.307Z",
+      "updated": "2026-10-30T06:54:12.686Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T05:44:08.325Z",
+      "updated": "2026-10-30T12:50:55.168Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T02:11:09Z",
+      "updated": "2026-10-30T09:05:33Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T04:06:17.656Z",
+      "updated": "2026-10-30T10:21:04.523Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1888,7 +1888,7 @@
     },
     {
       "id": "p_kahoot-alt",
-      "url": "https://kahoot-alt-my-ketapang.vercel.app",
+      "url": "https://kahoot-alt.vercel.app",
       "title": "Kahoot Alt",
       "tag": "Vercel",
       "desc": "Live on Vercel · updated 2026-10-30.",
@@ -1901,7 +1901,7 @@
       "platforms": [
         "vercel"
       ],
-      "updated": "2026-10-30T02:45:01.663Z",
+      "updated": "2026-10-30T09:38:49.765Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1909,7 +1909,33 @@
       "sourceKeys": [
         "vercel:prj_RQA9kq7HJEjqZGrKaHnu0GEPrvf2"
       ]
+    },
+    {
+      "id": "p_mpob-my",
+      "url": "https://mpob-my.vercel.app",
+      "title": "Mpob My",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/mpob-my",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-10-30T09:11:00Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_LsSWo73QkVR3AhkfjcoRgCxtNgZe",
+        "github:mpob-my"
+      ]
     }
   ],
-  "_synced": "2026-10-30T05:54:44.866Z"
+  "_synced": "2026-10-30T13:01:41.370Z"
 }
