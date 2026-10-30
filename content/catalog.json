@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-29T18:54:20.664Z",
+      "updated": "2026-10-30T05:10:59.025Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1158,7 +1158,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-25T07:16:11.438Z",
+      "updated": "2026-10-30T03:13:37.840Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6abd1b86e766ec00089644f3/screenshot_2026-09-30-14-24-33-0000.webp",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-29T19:57:39.098Z",
+      "updated": "2026-10-30T05:44:08.325Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-29T22:03:28Z",
+      "updated": "2026-10-30T02:11:09Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1833,7 +1833,83 @@
         "vercel:prj_ml3UCNNksoBsba4XkzzqqSenDWcQ",
         "github:superv"
       ]
+    },
+    {
+      "id": "p_sc-release",
+      "url": "https://sc-release-nqzz.vercel.app",
+      "title": "Sc Release",
+      "tag": "Vercel",
+      "desc": "Live on Vercel · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/sc-release",
+      "platforms": [
+        "vercel"
+      ],
+      "updated": "2026-10-30T04:35:14.602Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_AbA4kfsDTBSgdhdsskMaInUEvHaE",
+        "vercel:prj_tjIXNAL58tUoGrPtN8zOab3Y7uCi",
+        "github:sc-release"
+      ]
+    },
+    {
+      "id": "p_bnm-release",
+      "url": "https://kahoot-alt-5sxp.vercel.app",
+      "title": "Bnm Release",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/bnm-release",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-10-30T04:06:17.656Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_iDzq68EmEm80Pyn15fiEQPGom8SS",
+        "github:bnm-release"
+      ]
+    },
+    {
+      "id": "p_kahoot-alt",
+      "url": "https://kahoot-alt-my-ketapang.vercel.app",
+      "title": "Kahoot Alt",
+      "tag": "Vercel",
+      "desc": "Live on Vercel · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-nextjs",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/kahoot-alt",
+      "platforms": [
+        "vercel"
+      ],
+      "updated": "2026-10-30T02:45:01.663Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_RQA9kq7HJEjqZGrKaHnu0GEPrvf2"
+      ]
     }
   ],
-  "_synced": "2026-10-29T22:48:28.641Z"
+  "_synced": "2026-10-30T05:54:44.866Z"
 }
