@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-31T02:11:06.612Z",
+      "updated": "2026-10-31T09:27:56.415Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T06:54:12.686Z",
+      "updated": "2026-10-31T06:44:33.608Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T22:45:50.996Z",
+      "updated": "2026-10-31T08:12:34.404Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy-my-ketapang.vercel.app",
+      "url": "https://bursamy.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-31T04:49:40.902Z",
+      "updated": "2026-10-31T11:47:25.375Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-31T01:07:54Z",
+      "updated": "2026-10-31T07:34:46Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1849,7 +1849,7 @@
       "platforms": [
         "vercel"
       ],
-      "updated": "2026-10-30T04:35:14.602Z",
+      "updated": "2026-10-31T07:55:50.416Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1937,5 +1937,5 @@
       ]
     }
   ],
-  "_synced": "2026-10-31T05:50:21.244Z"
+  "_synced": "2026-10-31T12:39:27.749Z"
 }
