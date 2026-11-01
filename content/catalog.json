@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-10-31T19:43:31.166Z",
+      "updated": "2026-11-01T20:08:37.701Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T12:58:55.845Z",
+      "updated": "2026-11-01T18:23:47.258Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-31T14:39:04.519Z",
+      "updated": "2026-11-01T15:43:32.733Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T13:18:14.947Z",
+      "updated": "2026-11-01T14:34:29.373Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T09:48:10Z",
+      "updated": "2026-11-01T20:52:59Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-30T10:21:04.523Z",
+      "updated": "2026-11-01T16:59:43.328Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1926,7 +1926,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-31T15:51:48Z",
+      "updated": "2026-11-01T16:55:46Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1937,5 +1937,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-01T13:36:09.167Z"
+  "_synced": "2026-11-01T22:06:00.785Z"
 }
