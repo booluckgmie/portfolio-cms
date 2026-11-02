@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T18:23:47.258Z",
+      "updated": "2026-11-02T02:14:35.217Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T20:52:59Z",
+      "updated": "2026-11-02T01:04:19Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1836,7 +1836,7 @@
     },
     {
       "id": "p_sc-release",
-      "url": "https://sc-release-nqzz.vercel.app",
+      "url": "https://sc-release.vercel.app",
       "title": "Sc Release",
       "tag": "Vercel",
       "desc": "Live on Vercel · updated 2026-10-30.",
@@ -1847,22 +1847,22 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/sc-release",
       "platforms": [
-        "vercel"
+        "vercel",
+        "github"
       ],
-      "updated": "2026-11-01T09:36:42Z",
+      "updated": "2026-11-02T00:22:06.394Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
       "auto": true,
       "sourceKeys": [
-        "vercel:prj_AbA4kfsDTBSgdhdsskMaInUEvHaE",
         "vercel:prj_tjIXNAL58tUoGrPtN8zOab3Y7uCi",
         "github:sc-release"
       ]
     },
     {
       "id": "p_bnm-release",
-      "url": "https://kahoot-alt-5sxp.vercel.app",
+      "url": "https://bnm-release.vercel.app",
       "title": "Bnm Release",
       "tag": "Vercel",
       "desc": "Live on Vercel & GitHub · updated 2026-10-30.",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-01T16:59:43.328Z",
+      "updated": "2026-11-02T01:39:01.795Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1937,5 +1937,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-01T22:06:00.785Z"
+  "_synced": "2026-11-02T06:14:53.274Z"
 }
