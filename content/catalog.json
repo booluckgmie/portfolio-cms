@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-05T21:45:48.059Z",
+      "updated": "2026-11-06T21:15:47.018Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-06T15:15:30.150Z",
+      "updated": "2026-11-07T00:47:33.004Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-06T18:32:15Z",
+      "updated": "2026-11-07T03:17:25Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-06T18:11:15.019Z",
+      "updated": "2026-11-07T02:59:01.627Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1937,5 +1937,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-06T19:27:42.995Z"
+  "_synced": "2026-11-07T06:04:25.813Z"
 }
