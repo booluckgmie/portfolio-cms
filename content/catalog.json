@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-10-06T20:47:26.833Z",
+      "updated": "2026-11-09T23:57:24.749Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -723,7 +723,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-06-13T09:36:01.903Z",
+      "updated": "2026-10-07T14:18:21.604Z",
       "sourceKeys": [
         "netlify:9eff3b56-862f-4bb2-a25c-351e67c768d6"
       ]
@@ -1103,11 +1103,14 @@
       "locked": false,
       "repo": "https://github.com/booluckgmie/sim-ge16",
       "platforms": [
-        "netlify"
+        "netlify",
+        "vercel",
+        "github"
       ],
-      "updated": "2026-08-01T00:14:08.354Z",
+      "updated": "2026-11-01T05:15:32.319Z",
       "sourceKeys": [
         "netlify:3023987c-fb7c-4f5f-8c7b-d3766af8454b",
+        "vercel:prj_Dmdw8qvR8V2DeaVmp01jAe2ERTuS",
         "github:sim-ge16"
       ]
     },
@@ -1127,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-07T01:20:05.637Z",
+      "updated": "2026-11-10T03:23:53.910Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1155,7 +1158,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-02T00:51:48.599Z",
+      "updated": "2026-10-30T03:13:37.840Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6abd1b86e766ec00089644f3/screenshot_2026-09-30-14-24-33-0000.webp",
       "newTab": true,
       "size": "",
@@ -1230,7 +1233,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-07-02T17:20:35.298Z",
+      "updated": "2026-10-24T12:48:40Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a469dc450efb861124bb258/screenshot_2026-07-02-17-20-36-0000.webp",
       "newTab": true,
       "size": "",
@@ -1256,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-06T07:16:37.750Z",
+      "updated": "2026-11-09T07:51:40.280Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1359,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-07T00:54:03.721Z",
+      "updated": "2026-11-07T20:23:34.488Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1373,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy-my-ketapang.vercel.app",
+      "url": "https://bursamy.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1387,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-07T05:09:35.272Z",
+      "updated": "2026-11-09T15:00:29.752Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1413,7 +1416,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-02T00:18:07.365Z",
+      "updated": "2026-10-18T05:19:54.138Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1441,7 +1444,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-09-23T01:46:37.902Z",
+      "updated": "2026-10-17T07:35:04.138Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1741,7 +1744,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-10-06T09:58:42.619Z",
+      "updated": "2026-11-09T11:42:54.608Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1752,7 +1755,213 @@
       ],
       "featured": true,
       "featuredOrder": 3
+    },
+    {
+      "id": "p_moomooiq",
+      "url": "https://moomooiq.vercel.app",
+      "title": "MoomooIQ",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-09.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/moomooIQ",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-05T13:36:03.420Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_J27Frlf2YO5hFgE86OqIJUtskuJo",
+        "github:moomooIQ"
+      ]
+    },
+    {
+      "id": "p_hazeshaman",
+      "url": "https://hazeshaman.vercel.app",
+      "title": "Hazeshaman",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-13.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/hazeshaman",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-10T04:23:15Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_3IYzrIuxkKHT97uOLJmkBJtHYZ3m",
+        "github:hazeshaman"
+      ]
+    },
+    {
+      "id": "p_superv",
+      "url": "https://superv-eight.vercel.app",
+      "title": "Superv",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-22.",
+      "group": "dev",
+      "icon": "sparkles",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/superv",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-10T07:02:09Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_ml3UCNNksoBsba4XkzzqqSenDWcQ",
+        "github:superv"
+      ]
+    },
+    {
+      "id": "p_sc-release",
+      "url": "https://sc-release.vercel.app",
+      "title": "Sc Release",
+      "tag": "Vercel",
+      "desc": "Live on Vercel · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/sc-release",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-09T08:59:42.320Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_tjIXNAL58tUoGrPtN8zOab3Y7uCi",
+        "github:sc-release"
+      ]
+    },
+    {
+      "id": "p_bnm-release",
+      "url": "https://bnm-release.vercel.app",
+      "title": "Bnm Release",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/bnm-release",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-10T03:36:57Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_iDzq68EmEm80Pyn15fiEQPGom8SS",
+        "github:bnm-release"
+      ]
+    },
+    {
+      "id": "p_kahoot-alt",
+      "url": "https://kahoot-alt.vercel.app",
+      "title": "Kahoot Alt",
+      "tag": "Vercel",
+      "desc": "Live on Vercel · updated 2026-10-30.",
+      "group": "dev",
+      "icon": "brand-nextjs",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/kahoot-alt",
+      "platforms": [
+        "vercel"
+      ],
+      "updated": "2026-11-03T06:21:26.298Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_RQA9kq7HJEjqZGrKaHnu0GEPrvf2"
+      ]
+    },
+    {
+      "id": "p_mpob-my",
+      "url": "https://mpob-my.vercel.app",
+      "title": "Malaysia Palm Oil Dashboard",
+      "tag": "Vercel",
+      "desc": "Live dashboard tracking Malaysian palm oil data (MPOB / DOSM) — prices, production and trade.",
+      "group": "data",
+      "icon": "chart-dots-3",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/mpob-my",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-09T20:57:12Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_LsSWo73QkVR3AhkfjcoRgCxtNgZe",
+        "github:mpob-my"
+      ]
+    },
+    {
+      "id": "p_market-sentiment",
+      "url": "https://market-sentiment-plum.vercel.app",
+      "title": "Malaysia Trend Radar",
+      "tag": "Vercel",
+      "desc": "Trend radar for Malaysian market sentiment and news signals, updated automatically.",
+      "group": "data",
+      "icon": "chart-dots-3",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/market-sentiment",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-10T03:26:38.085Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_nZU2lQ0cuoDwtqXtE58x0CDmNBxE",
+        "github:market-sentiment"
+      ]
     }
   ],
-  "_synced": "2026-10-07T06:05:36.614Z"
+  "_synced": "2026-11-10T07:24:21.581Z"
 }
