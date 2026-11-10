@@ -735,7 +735,15 @@ function setGHConfig(cfg){ localStorage.setItem('hub_gh_config', JSON.stringify(
 
 /* ─── LOAD CATALOG FROM SERVER ─── */
 async function loadCatalogFromServer(){
-  if(hasUnpublished) return false;   // never overwrite edits that are not published yet
+  if(hasUnpublished){   // never overwrite edits that are not published yet
+    try{
+      const r = await fetch(`/data/catalog.json?t=${Date.now()}`); const sv = await r.json();
+      const have = new Set((data.cards||[]).map(c=>c.id));
+      const n = (sv.cards||[]).filter(c=>!have.has(c.id)).length;
+      if(n && adminSessionValid()) showToast(`Live site has ${n} newer project${n>1?'s':''} — Admin → Discard unpublished changes to load them`, 'warn', 8000);
+    }catch{}
+    return false;
+  }
   try{
     const res = await fetch(`/data/catalog.json?t=${Date.now()}`);
     if(!res.ok) throw new Error('HTTP ' + res.status);
