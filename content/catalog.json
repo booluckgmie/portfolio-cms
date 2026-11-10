@@ -589,7 +589,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-05-29T09:19:47.333Z",
+      "updated": "2026-11-10T09:00:33.879Z",
       "sourceKeys": [
         "netlify:d5d5edcb-1fdd-4cab-8b58-e5cea3f7ec9d",
         "github:pintel-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-10T03:23:53.910Z",
+      "updated": "2026-11-10T12:22:27.641Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-09T07:51:40.280Z",
+      "updated": "2026-11-10T08:05:13.373Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-07T20:23:34.488Z",
+      "updated": "2026-11-10T09:27:05.806Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy.vercel.app",
+      "url": "https://bursamy-my-ketapang.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-09T15:00:29.752Z",
+      "updated": "2026-11-10T18:21:42.020Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-10T04:23:15Z",
+      "updated": "2026-11-10T13:04:26Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1824,7 +1824,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-10T07:02:09Z",
+      "updated": "2026-11-10T07:25:06.774Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1850,7 +1850,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-09T08:59:42.320Z",
+      "updated": "2026-11-10T09:07:20.450Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-10T03:36:57Z",
+      "updated": "2026-11-10T16:01:22.021Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1926,7 +1926,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-09T20:57:12Z",
+      "updated": "2026-11-10T18:05:59Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1952,7 +1952,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-10T03:26:38.085Z",
+      "updated": "2026-11-10T14:42:39.589Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1963,5 +1963,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-10T07:24:21.581Z"
+  "_synced": "2026-11-10T19:47:35.388Z"
 }
