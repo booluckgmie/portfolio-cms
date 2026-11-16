@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-14T20:27:17.246Z",
+      "updated": "2026-11-15T20:47:46.027Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T16:18:11.216Z",
+      "updated": "2026-11-16T01:42:59.778Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T17:58:18.494Z",
+      "updated": "2026-11-16T05:38:45.555Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T18:01:27Z",
+      "updated": "2026-11-16T03:16:20Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T14:54:23.946Z",
+      "updated": "2026-11-16T00:48:22.120Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1926,7 +1926,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T17:22:20Z",
+      "updated": "2026-11-16T00:46:24.647Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1952,7 +1952,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-15T03:00:33.225Z",
+      "updated": "2026-11-16T00:44:47.013Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1961,7 +1961,33 @@
         "vercel:prj_nZU2lQ0cuoDwtqXtE58x0CDmNBxE",
         "github:market-sentiment"
       ]
+    },
+    {
+      "id": "p_dengue-buster",
+      "url": "https://dengue-buster-phi.vercel.app",
+      "title": "Dengue Buster",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-11-16.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/dengue-buster",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-16T06:23:01.550Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_l2ePpmPe8JhmDp6eH1yZJz2K91Wi",
+        "github:dengue-buster"
+      ]
     }
   ],
-  "_synced": "2026-11-15T18:54:21.844Z"
+  "_synced": "2026-11-16T06:37:27.939Z"
 }
