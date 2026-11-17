@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T03:35:27.695Z",
+      "updated": "2026-11-17T12:58:31.390Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-16T07:45:02.185Z",
+      "updated": "2026-11-17T08:53:55.614Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-14T10:48:01.822Z",
+      "updated": "2026-11-17T10:06:42.347Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy-my-ketapang.vercel.app",
+      "url": "https://bursamy.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T07:15:52.679Z",
+      "updated": "2026-11-17T15:28:54.059Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T04:49:21Z",
+      "updated": "2026-11-17T14:00:08Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1850,7 +1850,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-16T08:56:54.180Z",
+      "updated": "2026-11-17T10:02:27.098Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T02:42:55.248Z",
+      "updated": "2026-11-17T18:02:26.481Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1926,7 +1926,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-16T20:39:35Z",
+      "updated": "2026-11-17T19:18:18Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1978,7 +1978,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T02:45:21.768Z",
+      "updated": "2026-11-17T09:22:07.722Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1989,5 +1989,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-17T07:59:30.083Z"
+  "_synced": "2026-11-17T20:59:10.447Z"
 }
