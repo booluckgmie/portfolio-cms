@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-16T23:59:53.618Z",
+      "updated": "2026-11-17T23:19:51.243Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T12:58:31.390Z",
+      "updated": "2026-11-18T03:31:03.275Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy.vercel.app",
+      "url": "https://bursamy-my-ketapang.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T15:28:54.059Z",
+      "updated": "2026-11-18T06:40:24.449Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T14:00:08Z",
+      "updated": "2026-11-18T03:54:54Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1824,7 +1824,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T07:50:20.819Z",
+      "updated": "2026-11-18T00:46:23Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T18:02:26.481Z",
+      "updated": "2026-11-18T01:58:42.248Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1952,7 +1952,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T03:02:23.402Z",
+      "updated": "2026-11-18T05:39:29.077Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1978,7 +1978,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-17T09:22:07.722Z",
+      "updated": "2026-11-18T02:01:40.072Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1989,5 +1989,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-17T20:59:10.447Z"
+  "_synced": "2026-11-18T07:35:32.955Z"
 }
