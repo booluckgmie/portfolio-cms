@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-21T21:26:34.205Z",
+      "updated": "2026-11-22T21:30:42.013Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T19:18:22.402Z",
+      "updated": "2026-11-23T00:41:35.576Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-21T19:37:51.683Z",
+      "updated": "2026-11-23T01:55:58.587Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T19:34:06.271Z",
+      "updated": "2026-11-23T07:01:20.173Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T18:05:26Z",
+      "updated": "2026-11-22T23:53:56Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1876,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T09:16:37.799Z",
+      "updated": "2026-11-23T01:30:01.073Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1952,7 +1952,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T00:32:35.201Z",
+      "updated": "2026-11-23T01:01:21.795Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1978,7 +1978,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-22T12:05:54.916Z",
+      "updated": "2026-11-23T02:04:32.422Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2015,5 +2015,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-22T19:45:05.168Z"
+  "_synced": "2026-11-23T07:45:26.872Z"
 }
