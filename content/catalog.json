@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T05:50:05.459Z",
+      "updated": "2026-11-24T17:36:35.599Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-23T08:36:38.884Z",
+      "updated": "2026-11-24T10:47:51.664Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1362,7 +1362,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-23T01:55:58.587Z",
+      "updated": "2026-11-24T18:05:08.732Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T09:08:41.946Z",
+      "updated": "2026-11-24T19:04:17.953Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1798,7 +1798,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T05:01:41Z",
+      "updated": "2026-11-24T16:31:38Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1850,7 +1850,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-23T10:11:07.751Z",
+      "updated": "2026-11-24T11:57:41.367Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1926,7 +1926,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-23T22:10:58Z",
+      "updated": "2026-11-24T20:47:38Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1978,7 +1978,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T02:45:59.932Z",
+      "updated": "2026-11-24T14:24:19.645Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2013,7 +2013,33 @@
         "vercel:prj_3iGVIzcDSctsLIJ8AyjNAzj4j1GD",
         "github:psycho-pulse"
       ]
+    },
+    {
+      "id": "p_mydt-pipeline",
+      "url": "https://mydt-pipeline.vercel.app",
+      "title": "Mydt Pipeline",
+      "tag": "Vercel",
+      "desc": "Live on Vercel & GitHub · updated 2026-11-24.",
+      "group": "dev",
+      "icon": "brand-python",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/mydt-pipeline",
+      "platforms": [
+        "vercel",
+        "github"
+      ],
+      "updated": "2026-11-24T10:13:44.328Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_xzfDSFEW0zGezKDlaAUTtpirq4b9",
+        "github:mydt-pipeline"
+      ]
     }
   ],
-  "_synced": "2026-11-24T09:58:49.888Z"
+  "_synced": "2026-11-24T22:30:37.195Z"
 }
