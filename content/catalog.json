@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-24T02:46:35.513Z",
+      "updated": "2026-11-25T00:19:30.543Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T17:36:35.599Z",
+      "updated": "2026-11-25T02:08:24.852Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T19:04:17.953Z",
+      "updated": "2026-11-25T07:45:02.879Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1494,40 +1494,45 @@
       "faded": false,
       "repo": "https://github.com/booluckgmie/asset-monitor",
       "platforms": [
-        "netlify"
+        "netlify",
+        "vercel",
+        "github"
       ],
-      "updated": "2026-06-04T13:56:41.966Z",
+      "updated": "2026-11-25T06:12:22.939Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a2183f5ae33370008bcbc08/screenshot_2026-06-04-13-56-42-0000.webp",
       "newTab": true,
       "size": "",
       "auto": true,
       "sourceKeys": [
         "netlify:e2a8ac76-1651-46d4-986e-5f2debcbeb1f",
+        "vercel:prj_qUX6iwrksWZUr2z1ZLBlk1NIRBgj",
         "github:asset-monitor"
       ]
     },
     {
       "id": "p_mylabour-market",
-      "url": "https://mylabour-market.netlify.app",
+      "url": "https://mylabour-market.vercel.app",
       "title": "Mylabour Market",
       "tag": "Netlify",
       "desc": "MY Labour Market Index dashboard.",
       "group": "dev",
-      "icon": "",
+      "icon": "brand-javascript",
       "color": "#4dd0e1",
       "locked": false,
       "faded": false,
-      "repo": "",
+      "repo": "https://github.com/booluckgmie/mylabour-market",
       "platforms": [
-        "netlify"
+        "vercel",
+        "github"
       ],
-      "updated": "2026-05-16T04:35:29.524Z",
+      "updated": "2026-11-25T06:12:05.082Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a07f40eeaf8e773654cc210/screenshot_2026-05-16-04-35-29-0000.webp",
       "newTab": true,
       "size": "",
       "auto": true,
       "sourceKeys": [
-        "netlify:03e1ee4d-f756-4d25-b947-4527e1c9064e"
+        "vercel:prj_M05uGJAEVHzMSBYDW5AlLMgT07wd",
+        "github:mylabour-market"
       ]
     },
     {
@@ -1798,7 +1803,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T16:31:38Z",
+      "updated": "2026-11-25T01:08:30Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1876,7 +1881,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T04:32:28.957Z",
+      "updated": "2026-11-25T04:25:28.952Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1952,7 +1957,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T04:53:59.806Z",
+      "updated": "2026-11-25T03:38:37.194Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1978,7 +1983,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T14:24:19.645Z",
+      "updated": "2026-11-25T00:14:17.851Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2030,7 +2035,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-24T10:13:44.328Z",
+      "updated": "2026-11-25T08:29:13Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2039,7 +2044,31 @@
         "vercel:prj_xzfDSFEW0zGezKDlaAUTtpirq4b9",
         "github:mydt-pipeline"
       ]
+    },
+    {
+      "id": "p_unicefmy-crip",
+      "url": "https://unicefmy-crip.vercel.app",
+      "title": "Unicefmy Crip",
+      "tag": "Vercel",
+      "desc": "Live on Vercel · updated 2026-11-25.",
+      "group": "dev",
+      "icon": "",
+      "color": "#4dd0e1",
+      "locked": false,
+      "faded": false,
+      "repo": "https://github.com/booluckgmie/unicefmy-crip",
+      "platforms": [
+        "vercel"
+      ],
+      "updated": "2026-11-25T06:23:22.039Z",
+      "thumbUrl": "",
+      "newTab": true,
+      "size": "",
+      "auto": true,
+      "sourceKeys": [
+        "vercel:prj_BfeCMCt1KisQ71rYlPoSrkMcN0aO"
+      ]
     }
   ],
-  "_synced": "2026-11-24T22:30:37.195Z"
+  "_synced": "2026-11-25T08:42:30.852Z"
 }
