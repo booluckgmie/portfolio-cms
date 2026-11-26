@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T04:49:40.041Z",
+      "updated": "2026-11-26T14:53:43.137Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1259,7 +1259,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-25T09:41:42.658Z",
+      "updated": "2026-11-26T09:18:47.685Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a98f454937b380008130d77/screenshot_2026-09-03-04-16-00-0000.webp",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy-my-ketapang.vercel.app",
+      "url": "https://bursamy.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T07:36:01.110Z",
+      "updated": "2026-11-26T16:19:27.602Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1803,7 +1803,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T03:14:20Z",
+      "updated": "2026-11-26T13:15:49Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1855,7 +1855,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-25T10:49:33.240Z",
+      "updated": "2026-11-26T10:22:40.444Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1931,7 +1931,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-25T20:04:24Z",
+      "updated": "2026-11-26T19:46:53Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1983,7 +1983,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T03:52:34.962Z",
+      "updated": "2026-11-26T17:28:12.130Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2070,5 +2070,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-26T08:26:52.473Z"
+  "_synced": "2026-11-26T21:38:20.871Z"
 }
