@@ -323,7 +323,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-11-26T00:00:27.525Z",
+      "updated": "2026-11-27T00:17:19.705Z",
       "sourceKeys": [
         "netlify:0f749b3a-35ce-431c-a9f5-943c93673698",
         "github:malaysia-mobility-dashboard"
@@ -808,7 +808,7 @@
       "platforms": [
         "netlify"
       ],
-      "updated": "2026-08-27T15:07:13.946Z",
+      "updated": "2026-11-27T00:23:19.689Z",
       "sourceKeys": [
         "netlify:a172f77a-2b7e-42b8-8656-22b4b9a6143f",
         "netlify:87740061-8d1a-4e1c-8bad-cea98bdc73b3"
@@ -1130,7 +1130,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T14:53:43.137Z",
+      "updated": "2026-11-27T07:43:20.610Z",
       "thumbUrl": "https://d33wubrfki0l68.cloudfront.net/6a96924872af99000805d142/screenshot_2026-09-01-08-52-44-0000.webp",
       "newTab": true,
       "size": "",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "p_sharecode",
-      "url": "https://bursamy.vercel.app",
+      "url": "https://bursamy-my-ketapang.vercel.app",
       "title": "Sharecode",
       "tag": "Vercel",
       "desc": "Share-code web app.",
@@ -1390,7 +1390,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T16:19:27.602Z",
+      "updated": "2026-11-27T07:33:29.584Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1803,7 +1803,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T13:15:49Z",
+      "updated": "2026-11-27T04:36:44Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1829,7 +1829,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-18T00:46:23Z",
+      "updated": "2026-11-27T01:11:48Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1881,7 +1881,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T02:34:26.245Z",
+      "updated": "2026-11-27T02:34:29.151Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1957,7 +1957,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T02:58:39.371Z",
+      "updated": "2026-11-27T03:02:20.798Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -1983,7 +1983,7 @@
         "vercel",
         "github"
       ],
-      "updated": "2026-11-26T17:28:12.130Z",
+      "updated": "2026-11-27T02:01:37.748Z",
       "thumbUrl": "",
       "newTab": true,
       "size": "",
@@ -2070,5 +2070,5 @@
       ]
     }
   ],
-  "_synced": "2026-11-26T21:38:20.871Z"
+  "_synced": "2026-11-27T08:41:41.673Z"
 }
